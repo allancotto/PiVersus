@@ -1,9 +1,3 @@
-# PiVersus
+Live Demo :
 
-Allan Cotto
-
-Ibrahim Javed
-
-Paul Lampropoulos
-
-Akhilesh Vishnu Hari
+https://packetcode.github.io/landing-page/
