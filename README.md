@@ -1,5 +1,7 @@
 # PiVersus
 
+![PiVersus Logo](https://user-images.githubusercontent.com/68835732/110843542-51948c00-82a0-11eb-8ce0-1597a9427c66.png)
+
 ## Team Members:
 * Allan Cotto 2589702H
 * Ibrahim Javed 2265799j
