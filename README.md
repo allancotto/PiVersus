@@ -1,12 +1,10 @@
 # PiVersus
 
-Allan Cotto 2589702H
-
-Ibrahim Javed 2265799j
-
-Paul Lampropoulos
-
-Akhilesh Vishnu Hari
+## Team Members:
+* Allan Cotto 2589702H
+* Ibrahim Javed 2265799j
+* Paul Lampropoulos
+* Akhilesh Vishnu Hari
 
 
 # Fleshing out the game system idea
@@ -23,10 +21,14 @@ the incoming data from the sensors in the controllers.
 
 
 # Our materials
-* Raspberry Pi 4B
+* Raspberry Pi 4 Model B 4GB RAM
 * Push buttons
 * 2x Accelerometer/Gyroscope/Magnetometer sensors
-
+* 1x 2-axis joystick
+* LCD Screen module
+* Mini External USB Stereo Speaker
+* HDMI to Micro-HDMI Cable
+* Power Supply (5.1V 3A)
 
 # Games
 ## Soda prank
@@ -38,8 +40,6 @@ adds it to an array. At the end of the game, an average is taken from the points
 in the array and the player with the highest average wins the game.
 
 ## Statue game
-Jan 23, 2021 715 PM
-Fleshing out the game system idea 2
 On the signal, the players must hold their respective controllers as perfectly
 still as possible. If someone shakes their controller to hard, they lose.
 The same accelerometer data from before is used to determine whether the
