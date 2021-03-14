@@ -4,8 +4,8 @@
 
 ## Team Members:
 * Allan Cotto 2589702H
-* Ibrahim Javed 2265799j
-* Paul Lampropoulos
+* Ibrahim Javed 2265799J
+* Paul Lampropoulos 2245874L
 * Akhilesh Vishnu Hari
 
 
