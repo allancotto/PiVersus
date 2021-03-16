@@ -1,0 +1,3 @@
+/*class setup for adc*/
+
+
