@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## PiVersus
 
 You can use the [editor on GitHub](https://github.com/allancotto/PiVersus/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
 
