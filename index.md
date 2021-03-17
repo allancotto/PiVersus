@@ -21,6 +21,8 @@ will explain the rules of the games, signal the start of a game and announce a
 winner at the end. Scoring for each game is done by real-time processing of
 the incoming data from the sensors in the controllers.
 
+![presentation_picture](https://user-images.githubusercontent.com/68835732/111471675-0c011480-8721-11eb-9ec6-8549978a00b3.png)
+
 
 # Our materials
 * Raspberry Pi 4 Model B 4GB RAM
