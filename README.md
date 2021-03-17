@@ -2,14 +2,6 @@
 
 ![PiVersus Logo](https://user-images.githubusercontent.com/68835732/110843542-51948c00-82a0-11eb-8ce0-1597a9427c66.png)
 
-## Team Members:
-* Allan Cotto 2589702H
-* Ibrahim Javed 2265799J
-* Paul Lampropoulos 2245874L
-* Akhilesh Vishnu Hari
-
-
-# Fleshing out the game system idea
 
 # Overview
 
@@ -62,3 +54,9 @@ Once the array is filled with data, the average of the values is calculated. If 
 average exceeds a certain requirement, the coin sound is played and a value
 representing a player's score is increased by 1. At the end of the time limit, the
 player with the most points wins the game.
+
+## Team Members:
+* Allan Cotto 2589702H
+* Ibrahim Javed 2265799J
+* Paul Lampropoulos 2245874L
+* Akhilesh Vishnu Hari
