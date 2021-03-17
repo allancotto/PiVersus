@@ -1,6 +1,6 @@
 # PiVersus
 
-![PiVersus Logo](https://user-images.githubusercontent.com/68835732/110843542-51948c00-82a0-11eb-8ce0-1597a9427c66.png)
+![piVersus logo 2](https://user-images.githubusercontent.com/68835732/111469007-1bcb2980-871e-11eb-84d1-6fcb7d76682a.png)
 
 ## Team Members:
 * Allan Cotto 2589702H
