@@ -10,6 +10,7 @@ based of github.com/marcod234 - integrated mcp3008 and bcm2835
 #include <stdio.h>
 #include <stdlib.h>
 
+#define ADC_SPI_0 0
 #define ADC_SPI_AUX 1  //SPI1
 
 class ADC {
@@ -18,9 +19,9 @@ class ADC {
         int readADC(uint8_t channel);
         int readADCDifference(uint8_t differential);
     private:
-    uint8_t spiModule;
-    uint8_t cs;
-    int SPIxADC(uint8_t channel,bool differential);
+        uint8_t spiModule;
+        uint8_t cs;
+        int SPIxADC(uint8_t channel,bool differential);
 };
 
 
