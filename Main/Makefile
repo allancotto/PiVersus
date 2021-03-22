@@ -6,7 +6,7 @@ SRC		:= src
 INCLUDE	:= include
 LIB		:= lib
 
-LIBRARIES	:= -lsfml-graphics -lsfml-window -lsfml-system -l bcm2835
+LIBRARIES	:= -lsfml-graphics -lsfml-window -lsfml-system -l wiringPi
 EXECUTABLE	:= main
 
 
