@@ -6,16 +6,22 @@
 #include <mcp3004.h>
 #include <wiringPiSPI.h>
 #include <unistd.h>
+#include "driver.h"
 
-#define BASE 100
-#define SPI_CHAN 0
+
 
 int main()
 {
-    int i;
-    printf("WiringPiSPISetup RC=%d\n",wiringPiSPISetup(0,500000));
-    mcp3004Setup(BASE,SPI_CHAN);
-    
+   
+   /* driver test code */
+    Driver driver;
+    driver.printADChannel(0);
+    driver.printADChannel(1);
+    driver.printADChannel(2);
+    driver.printADChannel(3);
+
+
+
     std::cout << "Hello Easy C++ project!" << std::endl;
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
     sf::CircleShape shape(100.f);
@@ -34,13 +40,7 @@ int main()
         window.draw(shape);
         window.display();
 
-        for(i=0;i<8;i++){
-            printf("Channel %d: value=%4d\n",i,analogRead(BASE+i));
-            printf("\n");
-            sleep(0.5);
-        }
-        sleep(2);
-
+    
         
     }
 
