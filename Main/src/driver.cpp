@@ -5,7 +5,6 @@
 #include <wiringPi.h>
 #include <mcp3004.h>
 #include <wiringPiSPI.h>
-#include <string>
 
 
 
@@ -25,15 +24,21 @@ void Driver::printJoystickStatus() {
     /*Joystick connected to channels 0 and 1 of the ADC (L/R to 0 and U/P to 1)*/
     int horizontal = analogRead(BASE+0);
     int vertical = analogRead(BASE+1);
-    
-    if(horizontal < 100) {
-
-    } else if (horizontal > 100 && horizontal <1000)
-    {
-        
-    } else {
-
-    }
-    
+    printf("The horizontal value is %d and the vertical value is %d",horizontal, vertical);
 
 }
+
+int Driver::getJoystickLR() {
+    /* Return Joystick LR value, 1 = right, 0 = centre, -1 = left */
+    int horizontal = analogRead(BASE+0);
+
+    if(horizontal>100 && horizontal<1000) {
+        return 0;
+    } else if (horizontal < 100) {
+        return -1;
+    } else {
+        return 1;
+    }
+
+}
+
