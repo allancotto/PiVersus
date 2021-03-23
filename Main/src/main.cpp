@@ -38,9 +38,26 @@ int main()
         window.display();
 
     
-        driver.printJoystickStatus();
-        printf("\n");
-        sleep(2);
+        
+        
+        if (driver.getJoystickUD() == 1) {
+            printf("UP \n");
+            sleep(0.5);
+            
+        } else if (driver.getJoystickUD() == -1) {
+            printf("DOWN \n");
+            sleep(0.5);
+        }
+
+        if (driver.getJoystickLR() == 1) {
+            printf("RIGHT \n");
+            sleep(0.5);
+            
+        } else if (driver.getJoystickLR() == -1) {
+            printf("LEFT \n");
+            sleep(0.5);
+        }
+        
     
         
     }

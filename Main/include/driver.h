@@ -19,7 +19,7 @@ public:
     void printADChannel(int channel);
     void printJoystickStatus(void);
     int getJoystickLR(void);
-    int getJoystickUP(void);
+    int getJoystickUD(void);
     
 };
 

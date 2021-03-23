@@ -42,3 +42,17 @@ int Driver::getJoystickLR() {
 
 }
 
+int Driver::getJoystickUD() {
+    /* Return joystick UD (up/down) value, 1 = up, 0 = centre, -1 = down */
+    int verticle = analogRead(BASE+1);
+
+    if(verticle>100 && verticle<1000) {
+        return 0;
+    } else if (verticle < 100) {
+        return -1;
+    } else {
+        return 1;
+    }
+
+}
+
