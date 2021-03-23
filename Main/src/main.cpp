@@ -15,10 +15,7 @@ int main()
    
    /* driver test code */
     Driver driver;
-    driver.printADChannel(0);
-    driver.printADChannel(1);
-    driver.printADChannel(2);
-    driver.printADChannel(3);
+    
 
 
 
@@ -40,6 +37,10 @@ int main()
         window.draw(shape);
         window.display();
 
+    
+        driver.printJoystickStatus();
+        printf("\n");
+        sleep(2);
     
         
     }

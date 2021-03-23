@@ -1,5 +1,5 @@
 /* Header file for Driver class 
-class will contain function to read from all ADC inputs i.e joystick, accelerometer*/
+class will contain function to read and trouble shoot all sensors i.e joystick, accelerometer*/
 
 #ifndef driver_h
 #define driver_h
@@ -17,6 +17,9 @@ private:
 public:
     Driver(); 
     void printADChannel(int channel);
+    void printJoystickStatus(void);
+    int getJoystickLR(void);
+    int getJoystickUP(void);
     
 };
 
