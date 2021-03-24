@@ -9,11 +9,14 @@ int main()
     sf::CircleShape shape(150.f);                                  //Making a placeholder shape
     shape.setFillColor(sf::Color::Green);                          //Defining it's fill colour
 
-    bool isLeftClickPressed; //Boolean to handle when the Left Mouse Button is pressed.
+    bool isLeftClickPressed = false; //Boolean to handle when the Left Mouse Button is pressed.
+    float menuButtonSizeX = 300.f, menuButtonSizeY = 200.f;
+    sf::Vector2i cursorWindowPosition; //2D Vector with the coordinates of the mouse cursor in the window
+    sf::Vector2f buttonOnePosition, buttonTwoPosition, buttonThreePosition;
 
-    sf::RectangleShape buttonOne(sf::Vector2f(300.0f, 200.0f));   //Making the shape for the button for game 1
-    sf::RectangleShape buttonTwo(sf::Vector2f(300.0f, 200.0f));   //Repeating for button 2...
-    sf::RectangleShape buttonThree(sf::Vector2f(300.0f, 200.0f)); //...and button 3
+    sf::RectangleShape buttonOne(sf::Vector2f(menuButtonSizeX, menuButtonSizeY));   //Making the shape for the button for game 1
+    sf::RectangleShape buttonTwo(sf::Vector2f(menuButtonSizeX, menuButtonSizeY));   //Repeating for button 2...
+    sf::RectangleShape buttonThree(sf::Vector2f(menuButtonSizeX, menuButtonSizeY)); //...and button 3
 
     sf::Font arialFont; //Variable for text font
 
@@ -24,13 +27,16 @@ int main()
     /* START OF VARIABLE TRANSFORM SECTION */
 
     buttonOne.setFillColor(sf::Color(163, 44, 196)); //Fill colours for the button shapes
-    buttonOne.setPosition(100.f, 420.f);             //Setting the positions for the shapes
+    buttonOne.setPosition(100.f, 420.f);             //Setting the positions for the shapes...
+    buttonOnePosition = buttonOne.getPosition();     //...and parsing them into a vector variable for click detection purposes
     buttonTwo.setFillColor(sf::Color(163, 44, 196));
     buttonTwo.setPosition(490.f, 420.f);
+    buttonTwoPosition = buttonTwo.getPosition();
     buttonThree.setFillColor(sf::Color(163, 44, 196));
     buttonThree.setPosition(880.f, 420.f);
+    buttonThreePosition = buttonThree.getPosition();
 
-    arialFont.loadFromFile("Main/src/Resources/Fonts/arial.ttf"); //Load the text font from file
+    arialFont.loadFromFile("../src/Resources/Fonts/arial.ttf"); //Load the text font from file
 
     gameOne.setFont(arialFont);             //Transforms for text 1, which goes over button 1. This is setting up the font.
     gameOne.setString("Soda Prank");        //Setting the string message
@@ -63,6 +69,7 @@ int main()
             switch (event.type)
             {
             // "Close" event, closes window
+            // DO NOT DELETE THIS CASE! DOING SO MEANS THAT THE WINDOW WILL NOT BE ABLE TO CLOSE!
             case sf::Event::Closed:
                 window.close();
                 break;
@@ -111,6 +118,29 @@ int main()
         window.draw(gameTwo);
         window.draw(gameThree);
         window.display();
+
+        if (isLeftClickPressed)
+        { //Click detection code block
+            cursorWindowPosition = sf::Mouse::getPosition(window);
+
+            if ((cursorWindowPosition.x > buttonOnePosition.x) && (cursorWindowPosition.x < buttonOnePosition.x + menuButtonSizeX) && (cursorWindowPosition.y > buttonOnePosition.y) && (cursorWindowPosition.y < buttonOnePosition.y + menuButtonSizeY))
+            {
+                std::cout << "You have successfully clicked on game 1!" << std::endl;
+                //Code block that moves to the instruction scene for game one, perhaps after some nice effects.
+            }
+
+            if ((cursorWindowPosition.x > buttonTwoPosition.x) && (cursorWindowPosition.x < buttonTwoPosition.x + menuButtonSizeX) && (cursorWindowPosition.y > buttonTwoPosition.y) && (cursorWindowPosition.y < buttonTwoPosition.y + menuButtonSizeY))
+            {
+                std::cout << "You have successfully clicked on game 2!" << std::endl;
+                //Code block that moves to the instruction scene for game two, perhaps after some nice effects.
+            }
+
+            if ((cursorWindowPosition.x > buttonThreePosition.x) && (cursorWindowPosition.x < buttonThreePosition.x + menuButtonSizeX) && (cursorWindowPosition.y > buttonThreePosition.y) && (cursorWindowPosition.y < buttonThreePosition.y + menuButtonSizeY))
+            {
+                std::cout << "You have successfully clicked on game 3!" << std::endl;
+                //Code block that moves to the instruction scene for game three, perhaps after some nice effects.
+            }
+        }
     }
 
     return 0;
