@@ -1,15 +1,15 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 int main()
 {
     std::cout << "From the PiVersus team, hello world!" << std::endl;
     sf::RenderWindow window(sf::VideoMode(1280, 720), "PiVersus"); //Making the window and giving it a title
     window.setVerticalSyncEnabled(true);                           //Turning on V-Sync
-    sf::CircleShape shape(150.f);                                  //Making a placeholder shape
-    shape.setFillColor(sf::Color::Green);                          //Defining it's fill colour
 
     bool isLeftClickPressed = false; //Boolean to handle when the Left Mouse Button is pressed.
+    bool soundFlag = true;
     float menuButtonSizeX = 300.f, menuButtonSizeY = 200.f;
     sf::Vector2i cursorWindowPosition; //2D Vector with the coordinates of the mouse cursor in the window
     sf::Vector2f buttonOnePosition, buttonTwoPosition, buttonThreePosition;
@@ -24,6 +24,9 @@ int main()
     sf::Text gameTwo;
     sf::Text gameThree;
 
+    sf::SoundBuffer buffer; //Starting the sound buffer for voice clips.
+    sf::Sound welcomeVoiceClip; //Variable that plays the welcome sound clip
+
     /* START OF VARIABLE TRANSFORM SECTION */
 
     buttonOne.setFillColor(sf::Color(163, 44, 196)); //Fill colours for the button shapes
@@ -37,6 +40,8 @@ int main()
     buttonThreePosition = buttonThree.getPosition();
 
     arialFont.loadFromFile("../src/Resources/Fonts/arial.ttf"); //Load the text font from file
+    buffer.loadFromFile("../src/Resources/Audio/Welcome.wav"); //Load the welcome sound effect into the sound buffer
+    welcomeVoiceClip.setBuffer(buffer);
 
     gameOne.setFont(arialFont);             //Transforms for text 1, which goes over button 1. This is setting up the font.
     gameOne.setString("Soda Prank");        //Setting the string message
@@ -72,11 +77,6 @@ int main()
             // DO NOT DELETE THIS CASE! DOING SO MEANS THAT THE WINDOW WILL NOT BE ABLE TO CLOSE!
             case sf::Event::Closed:
                 window.close();
-                break;
-
-            // Keyboard Key Press event
-            case sf::Event::KeyPressed:
-                // Lovely code block that runs through the keyboard keys
                 break;
 
             // Mouse Button Press event
@@ -118,6 +118,10 @@ int main()
         window.draw(gameTwo);
         window.draw(gameThree);
         window.display();
+        
+        if(soundFlag)
+            welcomeVoiceClip.play();
+            soundFlag = 0;
 
         if (isLeftClickPressed)
         { //Click detection code block
