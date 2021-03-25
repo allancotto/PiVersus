@@ -10,10 +10,12 @@ int main()
 
     bool isLeftClickPressed = false; //Boolean to handle when the Left Mouse Button is pressed.
     bool soundFlag = true;
+    int menuState = 0; //integer that handles the state of the menu when it is controlled by a joystick.
     float menuButtonSizeX = 300.f, menuButtonSizeY = 200.f;
     sf::Vector2i cursorWindowPosition; //2D Vector with the coordinates of the mouse cursor in the window
     sf::Vector2f buttonOnePosition, buttonTwoPosition, buttonThreePosition;
 
+    sf::RectangleShape outline(sf::Vector2f(menuButtonSizeX + 20.f, menuButtonSizeY + 20.f));
     sf::RectangleShape buttonOne(sf::Vector2f(menuButtonSizeX, menuButtonSizeY));   //Making the shape for the button for game 1
     sf::RectangleShape buttonTwo(sf::Vector2f(menuButtonSizeX, menuButtonSizeY));   //Repeating for button 2...
     sf::RectangleShape buttonThree(sf::Vector2f(menuButtonSizeX, menuButtonSizeY)); //...and button 3
@@ -24,10 +26,14 @@ int main()
     sf::Text gameTwo;
     sf::Text gameThree;
 
-    sf::SoundBuffer buffer; //Starting the sound buffer for voice clips.
+    sf::SoundBuffer buffer;     //Starting the sound buffer for voice clips.
     sf::Sound welcomeVoiceClip; //Variable that plays the welcome sound clip
 
     /* START OF VARIABLE TRANSFORM SECTION */
+
+    outline.setOutlineThickness(3.f);
+    outline.setOutlineColor(sf::Color(128, 0, 128));
+    outline.setPosition(90.f, 410.f);
 
     buttonOne.setFillColor(sf::Color(163, 44, 196)); //Fill colours for the button shapes
     buttonOne.setPosition(100.f, 420.f);             //Setting the positions for the shapes...
@@ -40,7 +46,7 @@ int main()
     buttonThreePosition = buttonThree.getPosition();
 
     arialFont.loadFromFile("../src/Resources/Fonts/arial.ttf"); //Load the text font from file
-    buffer.loadFromFile("../src/Resources/Audio/Welcome.wav"); //Load the welcome sound effect into the sound buffer
+    buffer.loadFromFile("../src/Resources/Audio/Welcome.wav");  //Load the welcome sound effect into the sound buffer
     welcomeVoiceClip.setBuffer(buffer);
 
     gameOne.setFont(arialFont);             //Transforms for text 1, which goes over button 1. This is setting up the font.
@@ -79,13 +85,55 @@ int main()
                 window.close();
                 break;
 
+            case sf::Event::KeyPressed:
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+                {
+                    /* Code block for menuing to the left */
+                    if (menuState > 0)
+                    {
+                        menuState--;
+                    }
+                }
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+                {
+                    /* code block for menuing to the right */
+                    if (menuState < 2)
+                    {
+                        menuState++;
+                    }
+                }
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+                {
+                    /* code block that should be equivalent to that of a click on the right spot */
+                }
+
+                break;
+
             // Mouse Button Press event
             case sf::Event::MouseButtonPressed:
                 switch (event.mouseButton.button)
                 {
 
                 case sf::Mouse::Left:
-                    isLeftClickPressed = true; //Setting & keeping up a flag for as long as the left click is pressed
+                    cursorWindowPosition = sf::Mouse::getPosition(window);
+
+                    if ((cursorWindowPosition.x > buttonOnePosition.x) && (cursorWindowPosition.x < buttonOnePosition.x + menuButtonSizeX) && (cursorWindowPosition.y > buttonOnePosition.y) && (cursorWindowPosition.y < buttonOnePosition.y + menuButtonSizeY))
+                    {
+                        std::cout << "You have successfully clicked on game 1!" << std::endl;
+                        //Code block that moves to the instruction scene for game one, perhaps after some nice effects.
+                    }
+
+                    if ((cursorWindowPosition.x > buttonTwoPosition.x) && (cursorWindowPosition.x < buttonTwoPosition.x + menuButtonSizeX) && (cursorWindowPosition.y > buttonTwoPosition.y) && (cursorWindowPosition.y < buttonTwoPosition.y + menuButtonSizeY))
+                    {
+                        std::cout << "You have successfully clicked on game 2!" << std::endl;
+                        //Code block that moves to the instruction scene for game two, perhaps after some nice effects.
+                    }
+
+                    if ((cursorWindowPosition.x > buttonThreePosition.x) && (cursorWindowPosition.x < buttonThreePosition.x + menuButtonSizeX) && (cursorWindowPosition.y > buttonThreePosition.y) && (cursorWindowPosition.y < buttonThreePosition.y + menuButtonSizeY))
+                    {
+                        std::cout << "You have successfully clicked on game 3!" << std::endl;
+                        //Code block that moves to the instruction scene for game three, perhaps after some nice effects.
+                    }
                     break;
 
                 default:
@@ -97,7 +145,6 @@ int main()
                 switch (event.mouseButton.button)
                 {
                 case sf::Mouse::Left:
-                    isLeftClickPressed = false; //Dropping the above flag when left click is released
                     break;
 
                 default:
@@ -111,6 +158,7 @@ int main()
 
         window.clear(sf::Color::Black);
 
+        window.draw(outline);
         window.draw(buttonOne);
         window.draw(buttonTwo);
         window.draw(buttonThree);
@@ -118,32 +166,27 @@ int main()
         window.draw(gameTwo);
         window.draw(gameThree);
         window.display();
-        
-        if(soundFlag)
+
+        if (soundFlag)
             welcomeVoiceClip.play();
-            soundFlag = 0;
+        soundFlag = 0;
 
-        if (isLeftClickPressed)
-        { //Click detection code block
-            cursorWindowPosition = sf::Mouse::getPosition(window);
+        switch (menuState)
+        {
+        case 0:
+            outline.setPosition(90.f, 410.f);
+            break;
 
-            if ((cursorWindowPosition.x > buttonOnePosition.x) && (cursorWindowPosition.x < buttonOnePosition.x + menuButtonSizeX) && (cursorWindowPosition.y > buttonOnePosition.y) && (cursorWindowPosition.y < buttonOnePosition.y + menuButtonSizeY))
-            {
-                std::cout << "You have successfully clicked on game 1!" << std::endl;
-                //Code block that moves to the instruction scene for game one, perhaps after some nice effects.
-            }
+        case 1:
+            outline.setPosition(480.f, 410.f);
+            break;
 
-            if ((cursorWindowPosition.x > buttonTwoPosition.x) && (cursorWindowPosition.x < buttonTwoPosition.x + menuButtonSizeX) && (cursorWindowPosition.y > buttonTwoPosition.y) && (cursorWindowPosition.y < buttonTwoPosition.y + menuButtonSizeY))
-            {
-                std::cout << "You have successfully clicked on game 2!" << std::endl;
-                //Code block that moves to the instruction scene for game two, perhaps after some nice effects.
-            }
+        case 2:
+            outline.setPosition(870.f, 410.f);
+            break;
 
-            if ((cursorWindowPosition.x > buttonThreePosition.x) && (cursorWindowPosition.x < buttonThreePosition.x + menuButtonSizeX) && (cursorWindowPosition.y > buttonThreePosition.y) && (cursorWindowPosition.y < buttonThreePosition.y + menuButtonSizeY))
-            {
-                std::cout << "You have successfully clicked on game 3!" << std::endl;
-                //Code block that moves to the instruction scene for game three, perhaps after some nice effects.
-            }
+        default:
+            break;
         }
     }
 
