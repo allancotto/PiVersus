@@ -32,7 +32,7 @@ int main()
     /* START OF VARIABLE TRANSFORM SECTION */
 
     outline.setOutlineThickness(3.f);
-    outline.setOutlineColor(sf::Color(128, 0, 128));
+    outline.setOutlineColor(sf::Color(255, 255, 255));
     outline.setPosition(90.f, 410.f);
 
     buttonOne.setFillColor(sf::Color(163, 44, 196)); //Fill colours for the button shapes
@@ -117,18 +117,21 @@ int main()
                 case sf::Mouse::Left:
                     cursorWindowPosition = sf::Mouse::getPosition(window);
 
+                    //Condition block that triggers if the mouse is within the bounds of button 1.
                     if ((cursorWindowPosition.x > buttonOnePosition.x) && (cursorWindowPosition.x < buttonOnePosition.x + menuButtonSizeX) && (cursorWindowPosition.y > buttonOnePosition.y) && (cursorWindowPosition.y < buttonOnePosition.y + menuButtonSizeY))
                     {
                         std::cout << "You have successfully clicked on game 1!" << std::endl;
                         //Code block that moves to the instruction scene for game one, perhaps after some nice effects.
                     }
 
+                    //Condition block that triggers if the mouse is within the bounds of button 2.
                     if ((cursorWindowPosition.x > buttonTwoPosition.x) && (cursorWindowPosition.x < buttonTwoPosition.x + menuButtonSizeX) && (cursorWindowPosition.y > buttonTwoPosition.y) && (cursorWindowPosition.y < buttonTwoPosition.y + menuButtonSizeY))
                     {
                         std::cout << "You have successfully clicked on game 2!" << std::endl;
                         //Code block that moves to the instruction scene for game two, perhaps after some nice effects.
                     }
 
+                    //Condition block that triggers if the mouse is within the bounds of button 3.
                     if ((cursorWindowPosition.x > buttonThreePosition.x) && (cursorWindowPosition.x < buttonThreePosition.x + menuButtonSizeX) && (cursorWindowPosition.y > buttonThreePosition.y) && (cursorWindowPosition.y < buttonThreePosition.y + menuButtonSizeY))
                     {
                         std::cout << "You have successfully clicked on game 3!" << std::endl;
