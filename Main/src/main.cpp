@@ -8,7 +8,6 @@ int main()
     sf::RenderWindow window(sf::VideoMode(1280, 720), "PiVersus"); //Making the window and giving it a title
     window.setVerticalSyncEnabled(true);                           //Turning on V-Sync
 
-    bool isLeftClickPressed = false; //Boolean to handle when the Left Mouse Button is pressed.
     bool soundFlag = true;
     int menuState = 0; //integer that handles the state of the menu when it is controlled by a joystick.
     float menuButtonSizeX = 300.f, menuButtonSizeY = 200.f;
