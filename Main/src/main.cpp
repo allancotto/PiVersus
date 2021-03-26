@@ -15,6 +15,8 @@ int main()
     sf::Vector2i cursorWindowPosition; //2D Vector with the coordinates of the mouse cursor in the window
     sf::Vector2f buttonOnePosition, buttonTwoPosition, buttonThreePosition;
 
+    sf::Texture background;
+    sf::Sprite bgSprite;
     sf::RectangleShape outline(sf::Vector2f(menuButtonSizeX + 20.f, menuButtonSizeY + 20.f));
     sf::RectangleShape buttonOne(sf::Vector2f(menuButtonSizeX, menuButtonSizeY));   //Making the shape for the button for game 1
     sf::RectangleShape buttonTwo(sf::Vector2f(menuButtonSizeX, menuButtonSizeY));   //Repeating for button 2...
@@ -30,6 +32,10 @@ int main()
     sf::Sound welcomeVoiceClip; //Variable that plays the welcome sound clip
 
     /* START OF VARIABLE TRANSFORM SECTION */
+
+    background.loadFromFile("../src/Resources/Images/PiVersus_Logo.png");
+    bgSprite.setTexture(background);
+    bgSprite.setPosition(758.f,150.f);
 
     outline.setOutlineThickness(3.f);
     outline.setOutlineColor(sf::Color(255, 255, 255));
@@ -161,6 +167,7 @@ int main()
 
         window.clear(sf::Color::Black);
 
+        window.draw(bgSprite);
         window.draw(outline);
         window.draw(buttonOne);
         window.draw(buttonTwo);
