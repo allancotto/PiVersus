@@ -3,7 +3,7 @@
 #include <chrono>
 #include <thread>
 
-//This file just loops and polls the driver for joystick events, not the most efficient but a simple way to test the joystick is connected and working.
+// This file just loops and polls the driver for joystick events, not the most efficient but a simple way to test the joystick is connected and working.
 
 // To compile code use command commented below, (no real need to -Wall etc) to run use "./joystickTest" when in the bin directory
 // g++ -Wall -Wextra -std=c++17 -ggdb -Iinclude -Llib src/driver.cpp src/Testing/joystickOutputTest.cpp -o bin/joystickTest -l wiringPi
@@ -33,11 +33,6 @@ int main() {
             std::this_thread::sleep_for(std::chrono::milliseconds(500));
         }
     }
-    
-   
-
-
-
 
     return 0;
 }
