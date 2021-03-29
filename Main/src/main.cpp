@@ -17,14 +17,6 @@
 int main()
 {
    
-    
-
-    /* driver test code */
-    Driver driver;
-    accel values;
-    
-
-
     std::cout << "Hello Easy C++ project!" << std::endl;
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
     sf::CircleShape shape(100.f);
@@ -43,32 +35,7 @@ int main()
         window.draw(shape);
         window.display();
 
-        values = driver.getAccelValues();
-        std::cout << "x: " << values.x << ", y: " << values.y << ", z: " << values.z << "\n";
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
-        
-        
-        if (driver.getJoystickUD() == 1) {
-            printf("UP \n");
-            sleep(0.5);
-            
-        } else if (driver.getJoystickUD() == -1) {
-            printf("DOWN \n");
-            sleep(0.5);
-        }
-
-        if (driver.getJoystickLR() == 1) {
-            printf("RIGHT \n");
-            sleep(0.5);
-            
-        } else if (driver.getJoystickLR() == -1) {
-            printf("LEFT \n");
-            sleep(0.5);
-        }
-    
     }
-
-    
 
     return 0;
 }

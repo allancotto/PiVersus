@@ -11,7 +11,7 @@
 Driver::Driver(){
     
     // set-up SPI on driver initialization
-    printf("WiringPiSPISetup RC=%d\n",wiringPiSPISetup(0,500000));
+    printf("WiringPiSPISetup (MCP3008) RC=%d\n",wiringPiSPISetup(0,500000));
     mcp3004Setup(BASE,SPI_CHAN);
 
 
@@ -44,7 +44,7 @@ int Driver::getJoystickLR() {
 
     if(horizontal>100 && horizontal<1000) {
         return 0;
-    } else if (horizontal < 100) {
+    } else if (horizontal < 150) {
         return -1;
     } else {
         return 1;
@@ -55,10 +55,9 @@ int Driver::getJoystickLR() {
 int Driver::getJoystickUD() {
     /* Return joystick UD (up/down) value, 1 = up, 0 = centre, -1 = down */
     int verticle = analogRead(BASE+1);
-
     if(verticle>100 && verticle<1000) {
         return 0;
-    } else if (verticle < 100) {
+    } else if (verticle < 150) {
         return -1;
     } else {
         return 1;
