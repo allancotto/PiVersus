@@ -48,23 +48,7 @@ int main()
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
         
         
-        if (driver.getJoystickUD() == 1) {
-            printf("UP \n");
-            sleep(0.5);
-            
-        } else if (driver.getJoystickUD() == -1) {
-            printf("DOWN \n");
-            sleep(0.5);
-        }
-
-        if (driver.getJoystickLR() == 1) {
-            printf("RIGHT \n");
-            sleep(0.5);
-            
-        } else if (driver.getJoystickLR() == -1) {
-            printf("LEFT \n");
-            sleep(0.5);
-        }
+        
     
     }
 
