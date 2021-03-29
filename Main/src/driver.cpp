@@ -2,17 +2,32 @@
 
 #include "driver.h"
 #include "cstdio"
+#include <iostream>
 #include <wiringPi.h>
 #include <mcp3004.h>
 #include <wiringPiSPI.h>
+#include <wiringPiI2C.h>
 
 
 
 
 
 Driver::Driver(){
+
+    // set-up SPI on driver initialization
     printf("WiringPiSPISetup RC=%d\n",wiringPiSPISetup(0,500000));
     mcp3004Setup(BASE,SPI_CHAN);
+
+
+    // Setup I2C communication with FXOS8700Q
+    int fd = wiringPiI2CSetup(FXOS8700CQ_SLAVE_ADDR);
+    if (fd == -1) {
+        std::cout << "Failed to init I2C communication.\n";
+        return -1;
+    }
+    std::cout << "I2C communication successfully setup.\n";
+    // Switch device to measurement mode
+    wiringPiI2CWriteReg8(fd, FXOS8700CQ_CTRL_REG1, 0000000001);
 
 }
 
