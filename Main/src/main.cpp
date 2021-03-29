@@ -8,15 +8,21 @@
 #include <unistd.h>
 #include "driver.h"
 
-
+#include <stdio.h>
+#include <wiringPiI2C.h>
+#include <iostream>
+#include <chrono>
+#include <thread>
 
 int main()
 {
    
-   /* driver test code */
-    Driver driver;
     
 
+    /* driver test code */
+    Driver driver;
+    accel values;
+    
 
 
     std::cout << "Hello Easy C++ project!" << std::endl;
@@ -37,7 +43,9 @@ int main()
         window.draw(shape);
         window.display();
 
-    
+        values = driver.getAccelValues();
+        std::cout << "x: " << values.x << ", y: " << values.y << ", z: " << values.z << "\n";
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
         
         
         if (driver.getJoystickUD() == 1) {
@@ -57,9 +65,7 @@ int main()
             printf("LEFT \n");
             sleep(0.5);
         }
-        
     
-        
     }
 
     
