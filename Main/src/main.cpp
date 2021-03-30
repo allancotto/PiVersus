@@ -1,40 +1,58 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include <stdio.h>
-#include <string.h>
-#include <wiringPi.h>
-#include <mcp3004.h>
-#include <wiringPiSPI.h>
-#include <unistd.h>
-#include "driver.h"
-
-#include <stdio.h>
-#include <wiringPiI2C.h>
-#include <iostream>
-#include <chrono>
-#include <thread>
+#include <SFML/Audio.hpp>
+#include <menu.h>
 
 int main()
 {
-   
-    std::cout << "Hello Easy C++ project!" << std::endl;
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    std::cout << "From the PiVersus team, hello world!" << std::endl;
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "PiVersus"); //Making the window and giving it a title
+    window.setVerticalSyncEnabled(true);                           //Turning on V-Sync
+    Menu menu(window.getSize().x, window.getSize().y);
+    
+    //bool soundFlag = true;
+    //sf::SoundBuffer buffer;     //Starting the sound buffer for voice clips.
+    //sf::Sound welcomeVoiceClip; //Variable that plays the welcome sound clip
+    // buffer.loadFromFile("../src/Resources/Audio/Welcome.wav");  //Load the welcome sound effect into the sound buffer
+    // welcomeVoiceClip.setBuffer(buffer);
 
+
+    //Run the program while the window is open. This is the Main loop
     while (window.isOpen())
     {
+        // Check window events that were triggered since the last iteration of the loop
         sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+            switch (event.type)
+            {
+            // "Close" event, closes window
+            // DO NOT DELETE THIS CASE! DOING SO MEANS THAT THE WINDOW WILL NOT BE ABLE TO CLOSE!
+            case sf::Event::Closed:
                 window.close();
+                break;
+
+            case sf::Event::KeyReleased:
+                switch (event.key.code)
+                {
+                case sf::Keyboard::D:
+                    menu.MoveRight();
+                    break;
+                
+                case sf::Keyboard::A:
+                    menu.MoveLeft();
+                    break;
+                }
+            }
         }
 
-        window.clear();
-        window.draw(shape);
+        window.clear(sf::Color::Black);
+        menu.draw(window);
         window.display();
 
+        //if (soundFlag)
+        //welcomeVoiceClip.play();
+        //soundFlag = 0;
     }
 
     return 0;
