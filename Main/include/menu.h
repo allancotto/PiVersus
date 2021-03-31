@@ -8,12 +8,10 @@
 class Menu {
 
 public:
-    Menu(float width, float height);
-
+    Menu();
     void draw(sf::RenderWindow &window);
     void MoveRight();
     void MoveLeft();
-
 
 private:
     int menuState;

@@ -2,13 +2,24 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <menu.h>
+#include <threadManager.h>
 
 int main()
 {
     std::cout << "From the PiVersus team, hello world!" << std::endl;
     sf::RenderWindow window(sf::VideoMode(1280, 720), "PiVersus"); //Making the window and giving it a title
-    window.setVerticalSyncEnabled(true);                           //Turning on V-Sync
-    Menu menu(window.getSize().x, window.getSize().y);
+    window.setVerticalSyncEnabled(true); //Turning on V-Sync
+
+    //initialise class instances
+    Menu menu;
+    Driver driver;
+    ThreadManager tManager(&menu, &driver);
+
+    tManager.menuJoystickThread.launch();
+
+    
+
+    
     
     //bool soundFlag = true;
     //sf::SoundBuffer buffer;     //Starting the sound buffer for voice clips.
@@ -20,6 +31,7 @@ int main()
     //Run the program while the window is open. This is the Main loop
     while (window.isOpen())
     {
+
         // Check window events that were triggered since the last iteration of the loop
         sf::Event event;
         while (window.pollEvent(event))
@@ -30,8 +42,11 @@ int main()
             // DO NOT DELETE THIS CASE! DOING SO MEANS THAT THE WINDOW WILL NOT BE ABLE TO CLOSE!
             case sf::Event::Closed:
                 window.close();
+                tManager.setAllFalse(); //allows all thread functions to return.
                 break;
 
+
+            //key released code no longer necessarry, joystick now controls menu movement.
             case sf::Event::KeyReleased:
                 switch (event.key.code)
                 {
