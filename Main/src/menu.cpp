@@ -1,7 +1,8 @@
+// menu class 
 #include "menu.h"
 
 
-Menu::Menu(float width, float height) {
+Menu::Menu() {
 
 
     font.loadFromFile("../Resources/Fonts/arial.ttf");
