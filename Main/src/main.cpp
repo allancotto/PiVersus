@@ -3,6 +3,7 @@
 #include <SFML/Audio.hpp>
 #include <menu.h>
 #include <threadManager.h>
+#include <stateMachine.h>
 
 int main()
 {
@@ -14,6 +15,8 @@ int main()
     Menu menu;
     Driver driver;
     ThreadManager tManager(&menu, &driver);
+    StateManager StateManager;
+
 
     tManager.menuJoystickThread.launch();
 
