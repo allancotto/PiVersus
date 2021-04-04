@@ -3,7 +3,7 @@
 #include <SFML/Audio.hpp>
 #include <menu.h>
 #include <threadManager.h>
-#include <stateMachine.h>
+#include <instructions.h>
 
 int main()
 {
@@ -11,19 +11,24 @@ int main()
     sf::RenderWindow window(sf::VideoMode(1280, 720), "PiVersus"); //Making the window and giving it a title
     window.setVerticalSyncEnabled(true); //Turning on V-Sync
 
+    enum state
+    {
+        STATE_MENU,
+        STATE_INSTRUCTIONS_GAME_ONE,
+        STATE_INSTRUCTIONS_GAME_TWO,
+        STATE_INSTRUCTIONS_GAME_THREE,
+        STATE_GAME_SCREEN
+    };
+    state state_;
+
     //initialise class instances
     Menu menu;
     Driver driver;
+    Instructions instructions;
     ThreadManager tManager(&menu, &driver);
-    StateManager StateManager;
-
 
     tManager.menuJoystickThread.launch();
 
-    
-
-    
-    
     //bool soundFlag = true;
     //sf::SoundBuffer buffer;     //Starting the sound buffer for voice clips.
     //sf::Sound welcomeVoiceClip; //Variable that plays the welcome sound clip
@@ -65,7 +70,22 @@ int main()
         }
 
         window.clear(sf::Color::Black);
-        menu.draw(window);
+        switch (state_){
+            case STATE_MENU:
+                menu.draw(window);
+                break;
+            case STATE_INSTRUCTIONS_GAME_ONE:
+                instructions.draw(window, 0);
+                break;
+            case STATE_INSTRUCTIONS_GAME_TWO:
+                instructions.draw(window, 1);
+                break;
+            case STATE_INSTRUCTIONS_GAME_THREE:
+                instructions.draw(window, 2);
+                break;
+            default:
+                break;
+        }
         window.display();
 
         //if (soundFlag)
