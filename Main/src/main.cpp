@@ -17,7 +17,7 @@ int main()
     ThreadManager tManager(&menu, &driver);
 
     tManager.menuJoystickThread.launch();
-    
+    tManager.menuPushButtonThread.launch();
     
 
 
