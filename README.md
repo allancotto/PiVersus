@@ -60,3 +60,11 @@ player with the most points wins the game.
 * Ibrahim Javed 2265799J
 * Paul Lampropoulos 2245874L
 * Akhilesh Vishnu Hari
+
+
+## Schematics:
+
+![Schematic 1](https://user-images.githubusercontent.com/68835732/113633467-eeaad080-9664-11eb-8d0d-5ba3c6a82a3b.png)
+
+
+*Figure #: Schematic for Raspberry PI and Accelerometer*
