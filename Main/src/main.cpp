@@ -3,6 +3,7 @@
 #include <SFML/Audio.hpp>
 #include <menu.h>
 #include <threadManager.h>
+#include <wiringPi.h>
 
 int main()
 {
@@ -16,8 +17,10 @@ int main()
     ThreadManager tManager(&menu, &driver);
 
     tManager.menuJoystickThread.launch();
-
     
+    
+
+
 
     
     
@@ -32,6 +35,11 @@ int main()
     while (window.isOpen())
     {
 
+        
+            
+        
+        
+        
         // Check window events that were triggered since the last iteration of the loop
         sf::Event event;
         while (window.pollEvent(event))
