@@ -43,8 +43,12 @@ public:
     int getJoystickLR(void);
     int getJoystickUD(void);
 
-    //accelerometer functions
+    //accelerometer function
     accel getAccelValues(void);
+
+    //push button function
+    int getPushButton(void);
+
    
 };
 

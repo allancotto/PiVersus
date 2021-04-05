@@ -24,6 +24,10 @@ Driver::Driver(){
     // Switch device to measurement mode
     wiringPiI2CWriteReg8(fd, FXOS8700CQ_CTRL_REG1, 0000000001);
 
+    //set-up for push button which is connected to GPIO pin 23
+    wiringPiSetupGpio();
+    pinMode(23,INPUT);
+
 }
 
 void Driver::printADChannel(int channel) {
@@ -84,5 +88,9 @@ accel Driver::getAccelValues() {
     values.z = dataZmsb;
 
     return values;
+}
+
+int Driver::getPushButton() {
+    return digitalRead(23);
 }
 

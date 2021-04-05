@@ -12,9 +12,9 @@ public:
     void draw(sf::RenderWindow &window);
     void MoveRight();
     void MoveLeft();
+    int menuState;
 
 private:
-    int menuState;
     sf::Font font;
     sf::Text games[NUMBER_OF_GAMES];
     sf::RectangleShape outline;
