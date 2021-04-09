@@ -17,7 +17,9 @@ int main()
         STATE_INSTRUCTIONS_GAME_ONE,
         STATE_INSTRUCTIONS_GAME_TWO,
         STATE_INSTRUCTIONS_GAME_THREE,
-        STATE_GAME_SCREEN
+        STATE_GAME_ONE,
+        STATE_GAME_TWO,
+        STATE_GAME_THREE
     };
     state state_;
 

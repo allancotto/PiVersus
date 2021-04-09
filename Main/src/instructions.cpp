@@ -1,4 +1,4 @@
-// menu class
+// instructions class
 #include "instructions.h"
 
 Instructions::Instructions()
