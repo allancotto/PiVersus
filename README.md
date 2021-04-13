@@ -14,7 +14,7 @@ winner at the end. Scoring for each game is done by real-time processing of
 the incoming data from the sensors in the controllers.
 
 
-# Our materials
+# Prototype Hardware
 * Raspberry Pi 4 Model B 4GB RAM
 * Push buttons
 * 2x Accelerometer/Gyroscope/Magnetometer sensors
