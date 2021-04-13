@@ -17,7 +17,7 @@ private:
   sf::Font font;
   sf::Text instructionText[NUMBER_OF_GAMES];
   sf::RectangleShape outline;
-  sf::RectangleShape startButton;
+  sf::RectangleShape startButton[2];
   sf::Texture background;
   sf::Sprite bgSprite;
 };

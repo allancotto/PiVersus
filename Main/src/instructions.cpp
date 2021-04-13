@@ -31,7 +31,7 @@ Instructions::Instructions()
     instructionText[i].setCharacterSize(36); // font size in pixels not points
     instructionText[i].setFillColor(sf::Color::White);
     instructionText[i].setStyle(sf::Text::Bold);
-    instructionText[i].setPosition(50.f, 50.f); // position to upper left corner
+    instructionText[i].setPosition(500.f, 50.f); // position to upper left corner
   }
 
   menuState = 0;
@@ -44,9 +44,13 @@ Instructions::Instructions()
   outline.setOutlineColor(sf::Color(255, 255, 255));
   outline.setPosition(90.f, 410.f);
 
-  startButton.setSize(sf::Vector2f(menuButtonSizeX, menuButtonSizeY));
-  startButton.setFillColor(sf::Color(162, 44, 196));
-  startButton.setPosition(490.f, 420.f);
+  startButton[0].setSize(sf::Vector2f(menuButtonSizeX, menuButtonSizeY));
+  startButton[0].setFillColor(sf::Color(162, 44, 196));
+  startButton[0].setPosition(100.f, 420.f);
+
+  startButton[1].setSize(sf::Vector2f(menuButtonSizeX, menuButtonSizeY));
+  startButton[1].setFillColor(sf::Color(162, 44, 196));
+  startButton[1].setPosition(490.f, 420.f);
 }
 
 void Instructions::draw(sf::RenderWindow &window, int State)
@@ -54,7 +58,8 @@ void Instructions::draw(sf::RenderWindow &window, int State)
 
   window.draw(bgSprite);
   window.draw(outline);
-  window.draw(startButton);
+  window.draw(startButton[0]);
+  window.draw(startButton[1]);
 
   switch (State)
   {

@@ -22,6 +22,8 @@ int main()
         STATE_GAME_THREE
     };
     state state_;
+    state_ = STATE_INSTRUCTIONS_GAME_ONE;
+    
 
     //initialise class instances
     Menu menu;
