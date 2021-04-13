@@ -91,7 +91,6 @@ void Menu::MoveLeft() {
 
     if(menuState -1 >= 0 ) {
         
-        
         menuState--;
         outline.setPosition(buttons[menuState].getPosition().x-10,buttons[menuState].getPosition().y-10);
     }

@@ -17,7 +17,7 @@ int main()
     Menu menu;
     Driver driver;
     Instructions instructions;
-    ThreadManager tManager(&menu, &driver);
+    ThreadManager tManager(&menu, &driver, &instructions);
 
     //launch main menu threads initially
     tManager.menuJoystickThread.launch();
