@@ -21,9 +21,6 @@ private:
     sf::RectangleShape buttons[NUMBER_OF_GAMES];
     sf::Texture background;
     sf::Sprite bgSprite;
-    
-
-
 };
 
 #endif
