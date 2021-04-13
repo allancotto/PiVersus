@@ -31,7 +31,7 @@ void ThreadManager::checkJoystick() {
     }
 }
 
-void ThreadManager::checkPushbutton() {
+void ThreadManager::checkPushbuttonMenu() {
 
     while (menuOpen)
     {
@@ -57,6 +57,5 @@ void ThreadManager::checkPushbutton() {
 
 
 void ThreadManager::setAllFalse() {
-
     menuOpen = false;
 }

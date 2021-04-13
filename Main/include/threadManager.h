@@ -12,7 +12,7 @@ class ThreadManager {
 public:
     ThreadManager(Menu* menu, Driver* driver); 
     void checkJoystick(); //function to check the joystick
-    void checkPushbutton(); // function to check pushbutton
+    void checkPushbuttonMenu(); // function to check pushbutton
     void setAllFalse(); // sets all thread variables to false to allow them to self terminate
 
     //threads
