@@ -5,6 +5,7 @@
 #include <threadManager.h>
 #include <wiringPi.h>
 #include <instructions.h>
+#include <gameScreen.h>
 
 int main()
 {
@@ -17,6 +18,7 @@ int main()
     Menu menu;
     Driver driver;
     Instructions instructions;
+    GameScreen gameScreen;
     ThreadManager tManager(&menu, &driver, &instructions);
 
     //launch main menu threads initially
@@ -64,7 +66,8 @@ int main()
         window.clear(sf::Color::Black);
         switch (tManager.state){
             case 0:
-                menu.draw(window);
+                //menu.draw(window);
+                gameScreen.draw(window);
                 break;
             case 1:
                 instructions.draw(window, 0);

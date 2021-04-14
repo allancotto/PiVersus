@@ -10,15 +10,14 @@ class GameScreen
 
 public:
   GameScreen();
-  void draw(sf::RenderWindow &window, int State);
+  void draw(sf::RenderWindow &window);
 
 private:
-  int menuState;
   sf::Font font;
-  sf::Text scoreText[NUMBER_OF_PLAYERS];
+  sf::Text scoreText;
   sf::Text scoreDivider;
-  sf::RectangleShape outline;
-  sf::RectangleShape startButton;
+  sf::RectangleShape scoreBackround;
+  sf::RectangleShape timeBackbround;
   sf::Texture background;
   sf::Sprite bgSprite;
 };
