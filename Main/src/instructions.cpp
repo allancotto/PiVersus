@@ -85,9 +85,9 @@ void Instructions::moveLeft() {
     }
 }
 
-void Instructions::draw(sf::RenderWindow &window, int State)
+void Instructions::draw(sf::RenderWindow &window, int state)
 {
-
+  
   window.draw(bgSprite);
   window.draw(outline);
   window.draw(buttons[0]);
@@ -95,16 +95,16 @@ void Instructions::draw(sf::RenderWindow &window, int State)
   window.draw(buttonText[0]);
   window.draw(buttonText[1]);
 
-  switch (State)
+  switch (state)
   {
   case 0:
-    window.draw(instructionText[State]);
+    window.draw(instructionText[state]);
     break;
   case 1:
-    window.draw(instructionText[State]);
+    window.draw(instructionText[state]);
     break;
   case 2:
-    window.draw(instructionText[State]);
+    window.draw(instructionText[state]);
     break;
   default:
     break;

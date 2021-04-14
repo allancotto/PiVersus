@@ -22,32 +22,11 @@ int main()
     ThreadManager tManager(&menu, &driver, &instructions);
 
     //launch main menu threads initially
-    tManager.menuJoystickThread.launch();
-    tManager.menuPushButtonThread.launch();
-
-    
-
-
-
-    
-    
-
-    //bool soundFlag = true;
-    //sf::SoundBuffer buffer;     //Starting the sound buffer for voice clips.
-    //sf::Sound welcomeVoiceClip; //Variable that plays the welcome sound clip
-    // buffer.loadFromFile("../src/Resources/Audio/Welcome.wav");  //Load the welcome sound effect into the sound buffer
-    // welcomeVoiceClip.setBuffer(buffer);
-
+    tManager.launchMenuThreads();
 
     //Run the program while the window is open. This is the Main loop
     while (window.isOpen())
-    {
-
-        
-            
-        
-        
-        
+    {   
         // Check window events that were triggered since the last iteration of the loop
         sf::Event event;
         while (window.pollEvent(event))
@@ -66,8 +45,7 @@ int main()
         window.clear(sf::Color::Black);
         switch (tManager.state){
             case 0:
-                //menu.draw(window);
-                gameScreen.draw(window);
+                menu.draw(window);
                 break;
             case 1:
                 instructions.draw(window, 0);
@@ -78,12 +56,22 @@ int main()
             case 3:
                 instructions.draw(window, 2);
                 break;
+            case 4:
+                gameScreen.draw(window, 0);
+                tManager.endMenuThreads();
+                break;
+            case 5:
+                gameScreen.draw(window, 1);
+                tManager.endMenuThreads();
+                break;
+            case 6:
+                gameScreen.draw(window, 2);
+                tManager.endMenuThreads();
+                break;
+
         }
         window.display();
 
-        //if (soundFlag)
-        //welcomeVoiceClip.play();
-        //soundFlag = 0;
     }
 
     return 0;

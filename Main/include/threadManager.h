@@ -30,6 +30,7 @@ public:
 
     // menu threads
     void launchMenuThreads();
+    void endMenuThreads();
     sf::Thread menuJoystickThread; //this thread will check for joystick inputs
     sf::Thread menuPushButtonThread; //this thread will check for pushbutton inputs
     

@@ -10,7 +10,7 @@ class GameScreen
 
 public:
   GameScreen();
-  void draw(sf::RenderWindow &window, int gameState);
+  void draw(sf::RenderWindow &window, int state);
 
   sf::Text scoreText;
   sf::Text timeText;

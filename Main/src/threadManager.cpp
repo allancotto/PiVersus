@@ -55,6 +55,7 @@ void ThreadManager::checkPushButton() {
 
     while (pushButtonThreadAlive)
     {
+    std::cout << "Pushbutton pressed" << std::endl;
     if(driver->getPushButton() == 1) {
             switch (state)
             {
@@ -79,15 +80,21 @@ void ThreadManager::checkPushButton() {
 
 void ThreadManager::setAllFalse() {
 
-    pushButtonThreadAlive = false;
-    joystickThreadAlive = false;
+    endMenuThreads();
 }
 
 void ThreadManager::launchMenuThreads() {
 
     menuJoystickThread.launch();
-    menuJoystickThread.launch();
+    menuPushButtonThread.launch();
     
+}
+
+void ThreadManager::endMenuThreads() {
+
+    pushButtonThreadAlive = false;
+    joystickThreadAlive = false;
+
 }
 
 void ThreadManager::menuSelection() {
@@ -115,8 +122,19 @@ void ThreadManager::instructionSelection() {
 
     switch (instructions->instructionState)
                 {
-                case 0:
-                    std::cout << "Play game selected" << std::endl;
+                case 0: // enter a game
+                    switch (state)
+                    {
+                    case 1:
+                        state = 4; //currently in instruction state 1 which leads to game 1 (state 3...)
+                        break;
+                    
+                    case 2:
+                        state = 5;
+                        break;
+                    case 3:
+                        state = 6;
+                    }
                     break;
                 
                 case 1:
