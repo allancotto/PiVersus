@@ -75,8 +75,6 @@ int main()
             case 3:
                 instructions.draw(window, 2);
                 break;
-            default:
-                break;
         }
         window.display();
 
@@ -87,3 +85,5 @@ int main()
 
     return 0;
 }
+
+

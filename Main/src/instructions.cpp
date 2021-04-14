@@ -11,6 +11,8 @@ Instructions::Instructions()
   bgSprite.setTexture(background);
   bgSprite.setPosition(100.f, 40.f);
 
+  instructionState = 0;
+
   for (int i = 0; i < NUMBER_OF_GAMES; i++){
     instructionText[i].setFont(font);
     switch (i)
@@ -27,14 +29,26 @@ Instructions::Instructions()
     default:
       break;
     }
-    
+
     instructionText[i].setCharacterSize(36); // font size in pixels not points
     instructionText[i].setFillColor(sf::Color::White);
     instructionText[i].setStyle(sf::Text::Bold);
     instructionText[i].setPosition(500.f, 50.f); // position to upper left corner
   }
 
-  instructionState = 0;
+    buttonText[0].setFont(font);
+    buttonText[0].setString("Play Game");
+    buttonText[0].setCharacterSize(24); // font size in pixels not points
+    buttonText[0].setFillColor(sf::Color::White);
+    buttonText[0].setStyle(sf::Text::Bold);
+    buttonText[0].setPosition(100.f, 420.f); // position to upper left corner
+
+    buttonText[1].setFont(font);
+    buttonText[1].setString("Back to Menu");
+    buttonText[1].setCharacterSize(24); // font size in pixels not points
+    buttonText[1].setFillColor(sf::Color::White);
+    buttonText[1].setStyle(sf::Text::Bold);
+    buttonText[1].setPosition(490.f, 420.f); // position to upper left corner
 
   // for some reason defined value isn't currently working so defining here instead
   float menuButtonSizeX = 300.f, menuButtonSizeY = 200.f;
@@ -78,6 +92,8 @@ void Instructions::draw(sf::RenderWindow &window, int State)
   window.draw(outline);
   window.draw(buttons[0]);
   window.draw(buttons[1]);
+  window.draw(buttonText[0]);
+  window.draw(buttonText[1]);
 
   switch (State)
   {
