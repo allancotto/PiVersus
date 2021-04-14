@@ -27,14 +27,14 @@ Instructions::Instructions()
     default:
       break;
     }
-    //instructionText[0].setString("Soda Prank");
+    
     instructionText[i].setCharacterSize(36); // font size in pixels not points
     instructionText[i].setFillColor(sf::Color::White);
     instructionText[i].setStyle(sf::Text::Bold);
     instructionText[i].setPosition(500.f, 50.f); // position to upper left corner
   }
 
-  menuState = 0;
+  instructionState = 0;
 
   // for some reason defined value isn't currently working so defining here instead
   float menuButtonSizeX = 300.f, menuButtonSizeY = 200.f;
@@ -44,13 +44,31 @@ Instructions::Instructions()
   outline.setOutlineColor(sf::Color(255, 255, 255));
   outline.setPosition(90.f, 410.f);
 
-  startButton[0].setSize(sf::Vector2f(menuButtonSizeX, menuButtonSizeY));
-  startButton[0].setFillColor(sf::Color(162, 44, 196));
-  startButton[0].setPosition(100.f, 420.f);
+  buttons[0].setSize(sf::Vector2f(menuButtonSizeX, menuButtonSizeY));
+  buttons[0].setFillColor(sf::Color(162, 44, 196));
+  buttons[0].setPosition(100.f, 420.f);
 
-  startButton[1].setSize(sf::Vector2f(menuButtonSizeX, menuButtonSizeY));
-  startButton[1].setFillColor(sf::Color(162, 44, 196));
-  startButton[1].setPosition(490.f, 420.f);
+  buttons[1].setSize(sf::Vector2f(menuButtonSizeX, menuButtonSizeY));
+  buttons[1].setFillColor(sf::Color(162, 44, 196));
+  buttons[1].setPosition(490.f, 420.f);
+}
+
+void Instructions::moveRight() {
+
+    if(instructionState +1 < 2 ) { 
+        
+        instructionState++;
+        outline.setPosition(buttons[instructionState].getPosition().x-10,buttons[instructionState].getPosition().y-10);
+    }
+}
+
+void Instructions::moveLeft() {
+
+    if(instructionState -1 >= 0 ) {
+        
+        instructionState--;
+        outline.setPosition(buttons[instructionState].getPosition().x-10,buttons[instructionState].getPosition().y-10);
+    }
 }
 
 void Instructions::draw(sf::RenderWindow &window, int State)
@@ -58,8 +76,8 @@ void Instructions::draw(sf::RenderWindow &window, int State)
 
   window.draw(bgSprite);
   window.draw(outline);
-  window.draw(startButton[0]);
-  window.draw(startButton[1]);
+  window.draw(buttons[0]);
+  window.draw(buttons[1]);
 
   switch (State)
   {

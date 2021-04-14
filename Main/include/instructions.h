@@ -9,15 +9,19 @@ class Instructions
 {
 
 public:
+  int instructionState; // to know what button is selected - either play the game or go back to the main menu
+
   Instructions();
   void draw(sf::RenderWindow &window, int State);
 
+  void moveRight();
+  void moveLeft();
+
 private:
-  int menuState;
   sf::Font font;
   sf::Text instructionText[NUMBER_OF_GAMES];
   sf::RectangleShape outline;
-  sf::RectangleShape startButton[2];
+  sf::RectangleShape buttons[2];
   sf::Texture background;
   sf::Sprite bgSprite;
 };

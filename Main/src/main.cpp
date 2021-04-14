@@ -12,28 +12,17 @@ int main()
     sf::RenderWindow window(sf::VideoMode(1280, 720), "PiVersus"); //Making the window and giving it a title
     window.setVerticalSyncEnabled(true); //Turning on V-Sync
 
-    enum state
-    {
-        STATE_MENU,
-        STATE_INSTRUCTIONS_GAME_ONE,
-        STATE_INSTRUCTIONS_GAME_TWO,
-        STATE_INSTRUCTIONS_GAME_THREE,
-        STATE_GAME_ONE,
-        STATE_GAME_TWO,
-        STATE_GAME_THREE
-    };
-    state state_;
-    state_ = STATE_INSTRUCTIONS_GAME_ONE;
-    
 
-    //initialise class instances
+    //initialise class instances and state variable
     Menu menu;
     Driver driver;
     Instructions instructions;
-    ThreadManager tManager(&menu, &driver);
+    ThreadManager tManager(&menu, &driver, &instructions);
 
+    //launch main menu threads initially
     tManager.menuJoystickThread.launch();
     tManager.menuPushButtonThread.launch();
+
     
 
 
@@ -69,35 +58,21 @@ int main()
                 window.close();
                 tManager.setAllFalse(); //allows all thread functions to return.
                 break;
-
-
-            //key released code no longer necessarry, joystick now controls menu movement.
-            case sf::Event::KeyReleased:
-                switch (event.key.code)
-                {
-                case sf::Keyboard::D:
-                    menu.MoveRight();
-                    break;
-                
-                case sf::Keyboard::A:
-                    menu.MoveLeft();
-                    break;
-                }
             }
         }
 
         window.clear(sf::Color::Black);
-        switch (state_){
-            case STATE_MENU:
+        switch (tManager.state){
+            case 0:
                 menu.draw(window);
                 break;
-            case STATE_INSTRUCTIONS_GAME_ONE:
+            case 1:
                 instructions.draw(window, 0);
                 break;
-            case STATE_INSTRUCTIONS_GAME_TWO:
+            case 2:
                 instructions.draw(window, 1);
                 break;
-            case STATE_INSTRUCTIONS_GAME_THREE:
+            case 3:
                 instructions.draw(window, 2);
                 break;
             default:
