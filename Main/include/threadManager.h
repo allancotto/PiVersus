@@ -22,7 +22,6 @@ public:
     void checkJoystick(); //function to check the joystick
     void checkPushButton(); // function to check pushbutton
 
-
     void setAllFalse(); // sets all thread variables to false to allow them to self terminate
 
     void checkPushButtonInstructions();
@@ -42,6 +41,12 @@ private:
     Menu* menu; //instance in the class will allow thread functions to access menu functions.
     Driver* driver; //again to allow threads to access driver functions
     Instructions* instructions; // access instruction functions 
+
+    void menuSelection(); // function to check what selection has been made when in the menu state
+    void instructionSelection(); // function to check what selection has been made when in instruction state
+
+    void menuMove(int LR); //when joystick triggers a menu movement
+    void instructionMove(int LR); //when joystick triggers a movement in the instructions menu
     
 
     

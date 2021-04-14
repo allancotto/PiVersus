@@ -26,38 +26,26 @@ void ThreadManager::checkJoystick() {
     {
         int LR = driver->getJoystickLR();
 
+        if(LR == 1 || LR == -1) {
+
         switch (state)
         {
 
         case 0:
+            menuMove(LR);
+            sf::sleep(sf::milliseconds(300));  
 
-        if(LR == 1) {
-            menu->MoveRight();
-            sf::sleep(sf::milliseconds(300));
-
-        } else if (LR == -1) {
-            menu->MoveLeft();
-            sf::sleep(sf::milliseconds(300));
-        }    
-
-        break;
-
+            break;
 
         case 1 ... 3:
-
-        if(LR == 1) {
-            instructions->moveRight();
+            instructionMove(LR);
             sf::sleep(sf::milliseconds(300));
 
-        } else if (LR == -1) {
-            instructions->moveLeft();
-            sf::sleep(sf::milliseconds(300));
-        }    
-
-        break;
+            break;
         
         default:
             joystickThreadAlive = false;    //kill the thread if the current state doesn't need the joystick
+        }
         }
         
     }
@@ -67,42 +55,15 @@ void ThreadManager::checkPushButton() {
 
     while (pushButtonThreadAlive)
     {
-
-        if(driver->getPushButton() == 1) {
+    if(driver->getPushButton() == 1) {
             switch (state)
             {
             case 0:
-                switch (menu->menuState)
-                {
-                case 0:
-                    std::cout << "Game 1 selected" << std::endl;
-                    state = 1;
-                    break;
-                case 1:
-                    std::cout << "Game 2 selected" << std::endl;
-                    state = 2;
-                    break;
-
-                case 2:
-                    state = 3;
-                    std::cout << "Game 3 selected" << std::endl;
-                    break;
-                }
+                menuSelection();
                 break;
                 
-        
             case 1 ... 3:
-                switch (instructions->instructionState)
-                {
-                case 0:
-                    std::cout << "Play game selected" << std::endl;
-                    break;
-                
-                case 1:
-                    state = 0; //go back to main menu
-                    instructions->moveLeft();
-                    break;
-                }
+                instructionSelection();
                 break;
 
             default:
@@ -129,4 +90,64 @@ void ThreadManager::launchMenuThreads() {
     
 }
 
+void ThreadManager::menuSelection() {
+
+    switch (menu->menuState)
+                {
+                case 0:
+                    std::cout << "Game 1 selected" << std::endl;
+                    state = 1;
+                    break;
+                case 1:
+                    std::cout << "Game 2 selected" << std::endl;
+                    state = 2;
+                    break;
+
+                case 2:
+                    state = 3;
+                    std::cout << "Game 3 selected" << std::endl;
+                    break;
+    }
+
+}
+
+void ThreadManager::instructionSelection() {
+
+    switch (instructions->instructionState)
+                {
+                case 0:
+                    std::cout << "Play game selected" << std::endl;
+                    break;
+                
+                case 1:
+                    state = 0; //go back to main menu
+                    instructions->moveLeft();
+                    break;
+    }
+                
+}
+
+void ThreadManager::menuMove(int LR) {
+    
+    if(LR == 1) {
+            menu->MoveRight();
+
+        } else if (LR == -1) {
+            menu->MoveLeft();
+            
+    }    
+  
+}
+
+void ThreadManager::instructionMove(int LR) {
+
+    if(LR == 1) {
+            instructions->moveRight();
+            
+
+        } else if (LR == -1) {
+            instructions->moveLeft();
+            
+        }    
+}
 
