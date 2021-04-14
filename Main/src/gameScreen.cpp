@@ -6,6 +6,8 @@ GameScreen::GameScreen(){
 
   background.loadFromFile("../Resources/Images/PiVersus_Logo.png");
 
+  gameState = 0 // 0 for game 1 etc..
+
   bgSprite.setTexture(background);
   bgSprite.setPosition(100.f, 40.f);
 
@@ -56,7 +58,9 @@ GameScreen::GameScreen(){
 }
 
 
-void GameScreen::draw(sf::RenderWindow &window) {
+void GameScreen::draw(sf::RenderWindow &window, int gameState) {
+
+  gameState = gameState;
 
   window.draw(bgSprite);
   window.draw(timeBackground);

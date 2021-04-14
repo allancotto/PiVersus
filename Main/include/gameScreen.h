@@ -10,13 +10,16 @@ class GameScreen
 
 public:
   GameScreen();
-  void draw(sf::RenderWindow &window);
+  void draw(sf::RenderWindow &window, int gameState);
 
-private:
-  sf::Font font;
   sf::Text scoreText;
   sf::Text timeText;
   sf::Text readingsText;
+  int gameState; // to track what game has been selected
+
+private:
+  sf::Font font;
+  
   sf::RectangleShape scoreBackground;
   sf::RectangleShape timeBackground;
   sf::RectangleShape readingsBackground;
