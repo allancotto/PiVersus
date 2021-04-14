@@ -9,6 +9,8 @@ class Instructions
 {
 
 public:
+  int instructionState; // to know what button is selected - either play the game or go back to the main menu
+
   Instructions();
   void draw(sf::RenderWindow &window, int State);
 
@@ -16,7 +18,6 @@ public:
   void moveLeft();
 
 private:
-  int instructionState; // to know what button is selected - either play the game or go back to the main menu
   sf::Font font;
   sf::Text instructionText[NUMBER_OF_GAMES];
   sf::RectangleShape outline;

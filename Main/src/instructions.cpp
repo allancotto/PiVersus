@@ -27,7 +27,7 @@ Instructions::Instructions()
     default:
       break;
     }
-    //instructionText[0].setString("Soda Prank");
+    
     instructionText[i].setCharacterSize(36); // font size in pixels not points
     instructionText[i].setFillColor(sf::Color::White);
     instructionText[i].setStyle(sf::Text::Bold);
