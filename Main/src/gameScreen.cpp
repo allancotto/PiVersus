@@ -11,36 +11,61 @@ GameScreen::GameScreen(){
 
   scoreText.setFont(font);
   scoreText.setString("0");
-  scoreText.setCharacterSize(36); // font size in pixels not points
+  scoreText.setCharacterSize(36); 
   scoreText.setFillColor(sf::Color::White);
   scoreText.setStyle(sf::Text::Bold);
-  scoreText.setPosition(540.0f + 270.f, 360.f); // position to upper left corner
+  scoreText.setPosition(620.f, 425.f); 
 
 
-  scoreDivider.setFont(font);
-  scoreDivider.setString("-");
-  scoreDivider.setCharacterSize(36);
-  scoreDivider.setFillColor(sf::Color::White);
-  scoreDivider.setStyle(sf::Text::Bold);
-  scoreDivider.setPosition(540.f, 360.f); // position to upper left corner
+  timeText.setFont(font);
+  timeText.setString("10");
+  timeText.setCharacterSize(36);
+  timeText.setFillColor(sf::Color::White);
+  timeText.setStyle(sf::Text::Bold);
+  timeText.setPosition(620.f, 95.f); 
 
-  
+  readingsText.setFont(font);
+  readingsText.setString("x: 00  y: 00  z: 00");
+  readingsText.setCharacterSize(30);
+  readingsText.setFillColor(sf::Color::White);
+  readingsText.setStyle(sf::Text::Bold);
+  readingsText.setPosition(515.f, 625.f); 
 
-    
-  timeBackbround.setSize(sf::Vector2f(300.f, 100.f));
-  timeBackbround.setOutlineThickness(3.f);
-  timeBackbround.setOutlineColor(sf::Color(255, 255, 255));
-  timeBackbround.setPosition(90.f, 410.f);
+
+  timeBackground.setSize(sf::Vector2f(150.f, 60.f));
+  timeBackground.setOutlineThickness(3.f);
+  timeBackground.setFillColor(sf::Color(162, 44, 196));
+  timeBackground.setOutlineColor(sf::Color(255,255,255));
+  timeBackground.setPosition(565.f, 90.f);
+
+
+  scoreBackground.setSize(sf::Vector2f(150.f, 60.f));
+  scoreBackground.setOutlineThickness(3.f);
+  scoreBackground.setFillColor(sf::Color(162, 44, 196));
+  scoreBackground.setOutlineColor(sf::Color(255,255,255));
+  scoreBackground.setPosition(565.f, 420.f);
+
+  readingsBackground.setSize(sf::Vector2f(300.f, 60.f));
+  readingsBackground.setOutlineThickness(3.f);
+  readingsBackground.setFillColor(sf::Color(162, 44, 196));
+  readingsBackground.setOutlineColor(sf::Color(255,255,255));
+  readingsBackground.setPosition(490.f, 620.f);
+
+
+
 }
 
 
 void GameScreen::draw(sf::RenderWindow &window) {
 
   window.draw(bgSprite);
-  window.draw(timeBackbround);
+  window.draw(timeBackground);
+  window.draw(scoreBackground);
+  window.draw(readingsBackground);
 
   window.draw(scoreText);
-  window.draw(scoreDivider);
+  window.draw(timeText);
+  window.draw(readingsText);
 
 }
 

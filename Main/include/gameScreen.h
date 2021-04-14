@@ -15,9 +15,11 @@ public:
 private:
   sf::Font font;
   sf::Text scoreText;
-  sf::Text scoreDivider;
-  sf::RectangleShape scoreBackround;
-  sf::RectangleShape timeBackbround;
+  sf::Text timeText;
+  sf::Text readingsText;
+  sf::RectangleShape scoreBackground;
+  sf::RectangleShape timeBackground;
+  sf::RectangleShape readingsBackground;
   sf::Texture background;
   sf::Sprite bgSprite;
 };
