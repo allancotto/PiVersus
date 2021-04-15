@@ -44,10 +44,11 @@ public:
     
     void updateAccelerometer();
     void updateTime();
+    
 
     sf::Thread accelerometerUpdateThread;
-    //sf::Thread gameScoreUpdate;
     sf::Thread gameTimeUpdateThread;
+    
 
     
     // booleans used to terminate threads
@@ -55,7 +56,6 @@ public:
     bool pushButtonThreadAlive;
 
     bool accelerometerThreadAlive;
-    bool gameScoreUpdate;
     bool gameTimeThreadAlive;
 
 private:

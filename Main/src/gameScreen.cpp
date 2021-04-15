@@ -66,6 +66,7 @@ GameScreen::GameScreen(){
 
 void GameScreen::updateReadings(int x, int y, int z) {
 
+  scoreUpdate(x, y, z);
   std::ostringstream oss;
   oss << "x: " << x << "  y: " << y << "  z: " << z;
   
@@ -73,8 +74,11 @@ void GameScreen::updateReadings(int x, int y, int z) {
 }
 
 void GameScreen::countdownTime(){
+
   if(gameDuration>0) {
     gameDuration--;
+  } else {
+    timeEnded = true;
   }
   
   std::ostringstream oss;
@@ -83,6 +87,11 @@ void GameScreen::countdownTime(){
   timeText.setString(oss.str());
   
 }
+
+void GameScreen::scoreUpdate(int x, int y, int z) {
+  std::cout << "Update Score" << std::endl;
+}
+
 
 void GameScreen::draw(sf::RenderWindow &window, int state) {
 

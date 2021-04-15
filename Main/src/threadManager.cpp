@@ -14,6 +14,8 @@ ThreadManager::ThreadManager(Menu* menu, Driver* driver, Instructions* instructi
     pushButtonThreadAlive = true;
     accelerometerThreadAlive = false;
     gameTimeThreadAlive = false;
+    
+
     gameRunning = false; // extra boolean needed otherwise thread keeps running after game closed, (if closed in game state thread re-launches)
 
     this->menu = menu;
@@ -105,6 +107,7 @@ void ThreadManager::updateTime() {
     }
 }
 
+
 void ThreadManager::setAllFalse() {
 
     endMenuThreads();
@@ -122,11 +125,13 @@ void ThreadManager::launchMenuThreads() {
 void ThreadManager::launchGameThreads() {
     accelerometerThreadAlive = true;
     gameTimeThreadAlive = true;
+    
 
     gameRunning = true;
 
     gameTimeUpdateThread.launch();
     accelerometerUpdateThread.launch();
+    
 }
 
 void ThreadManager::endMenuThreads() {
@@ -140,6 +145,7 @@ void ThreadManager::endGameThreads() {
 
     accelerometerThreadAlive = false;
     gameTimeThreadAlive = false;
+    
 
 }
 

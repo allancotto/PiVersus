@@ -17,6 +17,7 @@ public:
 
   void updateReadings(int x, int y, int z); 
   void countdownTime();
+  void scoreUpdate(int x, int y, int z);
 
 private:
   sf::Font font;
@@ -34,6 +35,7 @@ private:
   sf::Sprite bgSprite;
 
   int gameDuration = 21;
+  bool timeEnded = false;
 };
 
 #endif
