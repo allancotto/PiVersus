@@ -16,6 +16,7 @@ public:
   void draw(sf::RenderWindow &window, int state);
 
   void updateReadings(int x, int y, int z); 
+  void countdownTime();
 
 private:
   sf::Font font;
@@ -31,6 +32,8 @@ private:
   sf::RectangleShape readingsBackground;
   sf::Texture background;
   sf::Sprite bgSprite;
+
+  int gameDuration = 21;
 };
 
 #endif

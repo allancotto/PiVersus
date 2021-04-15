@@ -26,7 +26,7 @@ GameScreen::GameScreen(){
 
 
   timeText.setFont(font);
-  timeText.setString("10");
+  timeText.setString("00");
   timeText.setCharacterSize(36);
   timeText.setFillColor(sf::Color::White);
   timeText.setStyle(sf::Text::Bold);
@@ -68,9 +68,20 @@ void GameScreen::updateReadings(int x, int y, int z) {
 
   std::ostringstream oss;
   oss << "x: " << x << "  y: " << y << "  z: " << z;
-  std::string var = oss.str();
   
-  readingsText.setString(var);
+  readingsText.setString(oss.str());
+}
+
+void GameScreen::countdownTime(){
+  if(gameDuration>0) {
+    gameDuration--;
+  }
+  
+  std::ostringstream oss;
+  oss << gameDuration;
+
+  timeText.setString(oss.str());
+  
 }
 
 void GameScreen::draw(sf::RenderWindow &window, int state) {
