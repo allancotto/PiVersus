@@ -20,6 +20,7 @@ public:
 private:
   sf::Font font;
   sf::Text instructionText[NUMBER_OF_GAMES];
+  sf::Text buttonText[2];
   sf::RectangleShape outline;
   sf::RectangleShape buttons[2];
   sf::Texture background;

@@ -5,6 +5,7 @@
 #include <threadManager.h>
 #include <wiringPi.h>
 #include <instructions.h>
+#include <gameScreen.h>
 
 int main()
 {
@@ -17,35 +18,15 @@ int main()
     Menu menu;
     Driver driver;
     Instructions instructions;
-    ThreadManager tManager(&menu, &driver, &instructions);
+    GameScreen gameScreen;
+    ThreadManager threadManager(&menu, &driver, &instructions, &gameScreen);
 
     //launch main menu threads initially
-    tManager.menuJoystickThread.launch();
-    tManager.menuPushButtonThread.launch();
-
-    
-
-
-
-    
-    
-
-    //bool soundFlag = true;
-    //sf::SoundBuffer buffer;     //Starting the sound buffer for voice clips.
-    //sf::Sound welcomeVoiceClip; //Variable that plays the welcome sound clip
-    // buffer.loadFromFile("../src/Resources/Audio/Welcome.wav");  //Load the welcome sound effect into the sound buffer
-    // welcomeVoiceClip.setBuffer(buffer);
-
+    threadManager.launchMenuThreads();
 
     //Run the program while the window is open. This is the Main loop
     while (window.isOpen())
-    {
-
-        
-            
-        
-        
-        
+    {   
         // Check window events that were triggered since the last iteration of the loop
         sf::Event event;
         while (window.pollEvent(event))
@@ -56,13 +37,13 @@ int main()
             // DO NOT DELETE THIS CASE! DOING SO MEANS THAT THE WINDOW WILL NOT BE ABLE TO CLOSE!
             case sf::Event::Closed:
                 window.close();
-                tManager.setAllFalse(); //allows all thread functions to return.
+                threadManager.setAllFalse(); //allows all thread functions to return.
                 break;
             }
         }
 
         window.clear(sf::Color::Black);
-        switch (tManager.state){
+        switch (threadManager.state){
             case 0:
                 menu.draw(window);
                 break;
@@ -75,15 +56,23 @@ int main()
             case 3:
                 instructions.draw(window, 2);
                 break;
-            default:
+            case 4:
+                gameScreen.draw(window, 0);
+                threadManager.startGame();
                 break;
+            case 5:
+                gameScreen.draw(window, 1);
+                break;
+            case 6:
+                gameScreen.draw(window, 2);
+                break;
+
         }
         window.display();
 
-        //if (soundFlag)
-        //welcomeVoiceClip.play();
-        //soundFlag = 0;
     }
 
     return 0;
 }
+
+
