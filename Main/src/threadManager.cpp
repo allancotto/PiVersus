@@ -87,9 +87,7 @@ void ThreadManager::updateAccelerometer() {
     
     accel readings = driver->getAccelValues();
     gameScreen->updateReadings(readings.x/1000,readings.y/1000,readings.z/1000); 
-    sf::sleep(sf::milliseconds(100));  
-
-      
+    sf::sleep(sf::milliseconds(100));   
     }
 
 }
