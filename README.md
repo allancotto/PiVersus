@@ -68,3 +68,10 @@ player with the most points wins the game.
 
 
 *Figure #: Schematic for Raspberry PI and Accelerometer*
+
+
+
+![Schematic 2](https://user-images.githubusercontent.com/68835732/113633421-d5098900-9664-11eb-9b33-fa46016a83dd.png)
+
+*Figure #: Schematic for Raspberry Pi and ADC (Analogue-to-digital converter) / Joystick*
+
