@@ -1,12 +1,18 @@
 //game screen draw class
 #include "gameScreen.h"
+#include "iostream"
+#include <string>
+#include <sstream>
+#include "driver.h"
+
+
+
+
 
 GameScreen::GameScreen(){
   font.loadFromFile("../Resources/Fonts/arial.ttf");
 
   background.loadFromFile("../Resources/Images/PiVersus_Logo.png");
-
-  
 
   bgSprite.setTexture(background);
   bgSprite.setPosition(100.f, 40.f);
@@ -27,7 +33,7 @@ GameScreen::GameScreen(){
   timeText.setPosition(620.f, 95.f); 
 
   readingsText.setFont(font);
-  readingsText.setString("x: 00  y: 00  z: 00");
+  readingsText.setString("x: 00  y:00  z:00");
   readingsText.setCharacterSize(30);
   readingsText.setFillColor(sf::Color::White);
   readingsText.setStyle(sf::Text::Bold);
@@ -58,6 +64,15 @@ GameScreen::GameScreen(){
 }
 
 
+void GameScreen::updateReadings(int x, int y, int z) {
+
+  std::ostringstream oss;
+  oss << "x: " << x << "  y: " << y << "  z: " << z;
+  std::string var = oss.str();
+  
+  readingsText.setString(var);
+}
+
 void GameScreen::draw(sf::RenderWindow &window, int state) {
 
   
@@ -72,4 +87,3 @@ void GameScreen::draw(sf::RenderWindow &window, int state) {
   window.draw(readingsText);
 
 }
-

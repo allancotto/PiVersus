@@ -19,10 +19,10 @@ int main()
     Driver driver;
     Instructions instructions;
     GameScreen gameScreen;
-    ThreadManager tManager(&menu, &driver, &instructions);
+    ThreadManager threadManager(&menu, &driver, &instructions, &gameScreen);
 
     //launch main menu threads initially
-    tManager.launchMenuThreads();
+    threadManager.launchMenuThreads();
 
     //Run the program while the window is open. This is the Main loop
     while (window.isOpen())
@@ -37,13 +37,13 @@ int main()
             // DO NOT DELETE THIS CASE! DOING SO MEANS THAT THE WINDOW WILL NOT BE ABLE TO CLOSE!
             case sf::Event::Closed:
                 window.close();
-                tManager.setAllFalse(); //allows all thread functions to return.
+                threadManager.setAllFalse(); //allows all thread functions to return.
                 break;
             }
         }
 
         window.clear(sf::Color::Black);
-        switch (tManager.state){
+        switch (threadManager.state){
             case 0:
                 menu.draw(window);
                 break;
@@ -58,15 +58,13 @@ int main()
                 break;
             case 4:
                 gameScreen.draw(window, 0);
-                tManager.endMenuThreads();
+                threadManager.startGame();
                 break;
             case 5:
                 gameScreen.draw(window, 1);
-                tManager.endMenuThreads();
                 break;
             case 6:
                 gameScreen.draw(window, 2);
-                tManager.endMenuThreads();
                 break;
 
         }

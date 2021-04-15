@@ -1,4 +1,7 @@
 #include "SFML/Graphics.hpp"
+#include <string>
+
+using namespace std;
 
 #ifndef gamescreen_h
 #define gamescreen_h
@@ -12,13 +15,16 @@ public:
   GameScreen();
   void draw(sf::RenderWindow &window, int state);
 
-  sf::Text scoreText;
-  sf::Text timeText;
-  sf::Text readingsText;
-  int gameState; // to track what game has been selected
+  void updateReadings(int x, int y, int z); 
 
 private:
   sf::Font font;
+
+  
+
+  sf::Text scoreText;
+  sf::Text timeText;
+  sf::Text readingsText;
   
   sf::RectangleShape scoreBackground;
   sf::RectangleShape timeBackground;

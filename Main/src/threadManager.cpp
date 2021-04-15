@@ -3,17 +3,21 @@
 #include "iostream"
 #include "menu.h"
 
-ThreadManager::ThreadManager(Menu* menu, Driver* driver, Instructions* instructions)
-: menuJoystickThread(&ThreadManager::checkJoystick, this), menuPushButtonThread(&ThreadManager::checkPushButton, this) {
+ThreadManager::ThreadManager(Menu* menu, Driver* driver, Instructions* instructions, GameScreen* gameScreen)
+: menuJoystickThread(&ThreadManager::checkJoystick, this), menuPushButtonThread(&ThreadManager::checkPushButton, this),
+     accelerometerUpdateThread(&ThreadManager::updateAccelerometer, this) {
     
     std::cout << "Initialising thread manager";
 
     joystickThreadAlive = true;
     pushButtonThreadAlive = true;
+    accelerometerThreadAlive = false;
+    gameRunning = false; // extra boolean needed otherwise thread keeps running after game closed, (if closed in game state thread re-launches)
 
     this->menu = menu;
     this->driver = driver; 
     this->instructions = instructions;
+    this->gameScreen = gameScreen;
 
     state = 0; //initially set state to 0 for menu
     
@@ -55,7 +59,6 @@ void ThreadManager::checkPushButton() {
 
     while (pushButtonThreadAlive)
     {
-    std::cout << "Pushbutton pressed" << std::endl;
     if(driver->getPushButton() == 1) {
             switch (state)
             {
@@ -77,11 +80,27 @@ void ThreadManager::checkPushButton() {
     }
 }
 
+void ThreadManager::updateAccelerometer() {
+
+    while (accelerometerThreadAlive)
+    {
+    
+    accel readings = driver->getAccelValues();
+    gameScreen->updateReadings(readings.x/1000,readings.y/1000,readings.z/1000); 
+    sf::sleep(sf::milliseconds(100));  
+
+      
+    }
+
+}
+
 
 void ThreadManager::setAllFalse() {
 
     endMenuThreads();
+    endGameThreads();
 }
+
 
 void ThreadManager::launchMenuThreads() {
 
@@ -90,11 +109,31 @@ void ThreadManager::launchMenuThreads() {
     
 }
 
+void ThreadManager::launchGameThreads() {
+    accelerometerThreadAlive = true;
+    gameRunning = true;
+    accelerometerUpdateThread.launch();
+}
+
 void ThreadManager::endMenuThreads() {
 
     pushButtonThreadAlive = false;
     joystickThreadAlive = false;
 
+}
+
+void ThreadManager::endGameThreads() {
+
+    accelerometerThreadAlive = false;
+
+}
+
+void ThreadManager::startGame() {
+    if(!gameRunning) {
+        endMenuThreads();
+        launchGameThreads();
+
+    }
 }
 
 void ThreadManager::menuSelection() {
