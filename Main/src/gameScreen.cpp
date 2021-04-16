@@ -31,10 +31,10 @@ GameScreen::GameScreen(){
 
   timeText.setFont(font);
   timeText.setString("00");
-  timeText.setCharacterSize(36);
+  timeText.setCharacterSize(72);
   timeText.setFillColor(sf::Color::White);
   timeText.setStyle(sf::Text::Bold);
-  timeText.setPosition(620.f, 95.f); 
+  timeText.setPosition(570.f, 95.f); 
 
   readingsText.setFont(font);
   readingsText.setString("x: 00  y:00  z:00");
@@ -44,7 +44,7 @@ GameScreen::GameScreen(){
   readingsText.setPosition(515.f, 625.f); 
 
 
-  timeBackground.setSize(sf::Vector2f(150.f, 60.f));
+  timeBackground.setSize(sf::Vector2f(150.f, 150.f));
   timeBackground.setOutlineThickness(3.f);
   timeBackground.setFillColor(sf::Color(162, 44, 196));
   timeBackground.setOutlineColor(sf::Color(255,255,255));
