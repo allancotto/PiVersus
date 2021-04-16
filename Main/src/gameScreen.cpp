@@ -17,6 +17,10 @@ GameScreen::GameScreen(){
   bgSprite.setTexture(background);
   bgSprite.setPosition(100.f, 40.f);
 
+  previousReadings.x = 0;
+  previousReadings.y =  0;
+  previousReadings.z = 0;
+
   scoreText.setFont(font);
   scoreText.setString("0");
   scoreText.setCharacterSize(36); 
@@ -26,7 +30,7 @@ GameScreen::GameScreen(){
 
 
   timeText.setFont(font);
-  timeText.setString("10");
+  timeText.setString("00");
   timeText.setCharacterSize(36);
   timeText.setFillColor(sf::Color::White);
   timeText.setStyle(sf::Text::Bold);
@@ -66,15 +70,51 @@ GameScreen::GameScreen(){
 
 void GameScreen::updateReadings(int x, int y, int z) {
 
+  scoreUpdate(x, y, z);
   std::ostringstream oss;
   oss << "x: " << x << "  y: " << y << "  z: " << z;
-  std::string var = oss.str();
   
-  readingsText.setString(var);
+  readingsText.setString(oss.str());
 }
 
-void GameScreen::draw(sf::RenderWindow &window, int state) {
+void GameScreen::countdownTime(){
 
+  if(gameDuration>0) {
+    gameDuration--;
+  } else {
+    timeEnded = true;
+  }
+  
+  std::ostringstream oss;
+  oss << gameDuration;
+
+  timeText.setString(oss.str());
+  
+}
+
+void GameScreen::scoreUpdate(int x, int y, int z) {
+  accel currentReadings;
+
+  currentReadings.x = x;
+  currentReadings.y = y;
+  currentReadings.z = z;
+
+  switch (gameSelected)
+  {
+  case 0:
+    updateScore1(currentReadings);
+    break;
+  
+  case 1:
+    updateScore2(currentReadings);
+    break;
+  }
+}
+
+
+void GameScreen::draw(sf::RenderWindow &window, int state) {
+  
+  gameSelected = state;
   
 
   window.draw(bgSprite);
@@ -86,4 +126,79 @@ void GameScreen::draw(sf::RenderWindow &window, int state) {
   window.draw(timeText);
   window.draw(readingsText);
 
+}
+
+void GameScreen::updateScore1(accel currentReadings) {
+
+  accel difference = scoreDifference(currentReadings);
+  currentScore = currentScore + difference.y;
+
+  
+
+  std::ostringstream oss;
+  oss << currentScore;
+  scoreText.setString(oss.str());
+
+}
+
+void GameScreen::updateScore2(accel currentReadings) {
+
+  accel difference = scoreDifference(currentReadings);
+
+  int differenceAdded = difference.x + difference.y + difference.z +1;
+  std::cout << differenceAdded << std::endl;
+
+  if(differenceAdded<5) {
+    currentScore = currentScore + (10/differenceAdded);
+  }
+  
+
+  std::ostringstream oss;
+  oss << currentScore;
+  scoreText.setString(oss.str());
+
+
+
+}
+
+
+accel GameScreen::scoreDifference(accel currentReadings) {
+
+  accel returnValue;
+
+  
+  //case negative value
+  returnValue.x = accelReadingDifference(currentReadings.x, previousReadings.x);
+  returnValue.y = accelReadingDifference(currentReadings.y, previousReadings.y);
+  returnValue.z = accelReadingDifference(currentReadings.z, previousReadings.z);
+
+  previousReadings = currentReadings;
+
+  return returnValue;
+
+}
+
+int GameScreen::accelReadingDifference(int current, int previous) {
+
+  if(current<0) {  
+
+    if(previous<0) {
+      return abs(abs(current)-abs(previous)); 
+
+    } else {
+      return abs(current) + previous;
+
+    }
+
+
+  } else {
+
+    if(previous<0) {
+      return abs(previous) + current;
+    } else {
+      return abs(current-previous);
+    }
+  }
+
+  return 0;
 }

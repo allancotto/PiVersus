@@ -3,15 +3,19 @@
 #include "iostream"
 #include "menu.h"
 
+
 ThreadManager::ThreadManager(Menu* menu, Driver* driver, Instructions* instructions, GameScreen* gameScreen)
 : menuJoystickThread(&ThreadManager::checkJoystick, this), menuPushButtonThread(&ThreadManager::checkPushButton, this),
-     accelerometerUpdateThread(&ThreadManager::updateAccelerometer, this) {
+     accelerometerUpdateThread(&ThreadManager::updateAccelerometer, this), gameTimeUpdateThread(&ThreadManager::updateTime, this)  {
     
     std::cout << "Initialising thread manager";
 
     joystickThreadAlive = true;
     pushButtonThreadAlive = true;
     accelerometerThreadAlive = false;
+    gameTimeThreadAlive = false;
+    
+
     gameRunning = false; // extra boolean needed otherwise thread keeps running after game closed, (if closed in game state thread re-launches)
 
     this->menu = menu;
@@ -87,11 +91,20 @@ void ThreadManager::updateAccelerometer() {
     
     accel readings = driver->getAccelValues();
     gameScreen->updateReadings(readings.x/1000,readings.y/1000,readings.z/1000); 
-    sf::sleep(sf::milliseconds(100));  
-
-      
+    sf::sleep(sf::milliseconds(100));   
     }
 
+}
+
+void ThreadManager::updateTime() {
+    while (gameTimeThreadAlive)
+    {
+        
+        gameScreen->countdownTime();
+        sf::sleep(sf::milliseconds(1000)); 
+        
+        
+    }
 }
 
 
@@ -111,8 +124,14 @@ void ThreadManager::launchMenuThreads() {
 
 void ThreadManager::launchGameThreads() {
     accelerometerThreadAlive = true;
+    gameTimeThreadAlive = true;
+    
+
     gameRunning = true;
+
+    gameTimeUpdateThread.launch();
     accelerometerUpdateThread.launch();
+    
 }
 
 void ThreadManager::endMenuThreads() {
@@ -125,6 +144,8 @@ void ThreadManager::endMenuThreads() {
 void ThreadManager::endGameThreads() {
 
     accelerometerThreadAlive = false;
+    gameTimeThreadAlive = false;
+    
 
 }
 

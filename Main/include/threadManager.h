@@ -43,10 +43,12 @@ public:
     void startGame();
     
     void updateAccelerometer();
+    void updateTime();
+    
 
     sf::Thread accelerometerUpdateThread;
-    //sf::Thread gameScoreUpdate;
-    //sf::Thread gameTimeUpdate;
+    sf::Thread gameTimeUpdateThread;
+    
 
     
     // booleans used to terminate threads
@@ -54,8 +56,7 @@ public:
     bool pushButtonThreadAlive;
 
     bool accelerometerThreadAlive;
-    bool gameScoreUpdate;
-    bool gameTimeUpdate;
+    bool gameTimeThreadAlive;
 
 private:
     Menu* menu; //instance in the class will allow thread functions to access menu functions.

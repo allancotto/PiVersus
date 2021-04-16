@@ -62,9 +62,11 @@ int main()
                 break;
             case 5:
                 gameScreen.draw(window, 1);
+                threadManager.startGame();
                 break;
             case 6:
                 gameScreen.draw(window, 2);
+                threadManager.startGame();
                 break;
 
         }
