@@ -23,10 +23,10 @@ GameScreen::GameScreen(){
 
   scoreText.setFont(font);
   scoreText.setString("0");
-  scoreText.setCharacterSize(36); 
+  scoreText.setCharacterSize(72); 
   scoreText.setFillColor(sf::Color::White);
   scoreText.setStyle(sf::Text::Bold);
-  scoreText.setPosition(620.f, 425.f); 
+  scoreText.setPosition(570.f, 425.f); 
 
 
   timeText.setFont(font);
@@ -51,7 +51,7 @@ GameScreen::GameScreen(){
   timeBackground.setPosition(565.f, 90.f);
 
 
-  scoreBackground.setSize(sf::Vector2f(150.f, 60.f));
+  scoreBackground.setSize(sf::Vector2f(150.f, 150.f));
   scoreBackground.setOutlineThickness(3.f);
   scoreBackground.setFillColor(sf::Color(162, 44, 196));
   scoreBackground.setOutlineColor(sf::Color(255,255,255));
