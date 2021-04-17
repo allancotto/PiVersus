@@ -38,7 +38,10 @@ private:
   sf::RectangleShape timeBackground;
   sf::RectangleShape readingsBackground;
   sf::Texture background;
+  sf::Texture statuePng;
+  sf::Texture sodaPng;
   sf::Sprite bgSprite;
+  sf::Sprite titleSprite;
 
   int gameDuration = 21;
   accel previousReadings;
