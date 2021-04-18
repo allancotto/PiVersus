@@ -25,7 +25,7 @@ GameScreen::GameScreen(){
 
 
 
-  previousReadings.x = 0;
+  previousReadings.x = 1;
   previousReadings.y =  0;
   previousReadings.z = 0;
 
@@ -123,6 +123,12 @@ void GameScreen::scoreUpdate(int x, int y, int z) {
 void GameScreen::draw(sf::RenderWindow &window, int state) {
   
   gameSelected = state;
+
+  if(gameSelected == 0) {
+    titleSprite.setTexture(sodaPng);
+  } else {
+    titleSprite.setTexture(statuePng);
+  }
   
 
   window.draw(bgSprite);
