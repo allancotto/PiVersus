@@ -35,7 +35,7 @@ in the array and the player with the highest average wins the game.
 
 ## Statue game
 On the signal, the players must hold their respective controllers as perfectly
-still as possible. If someone shakes their controller to hard, they lose.
+still as possible. If someone shakes their controller too hard, they lose.
 The same accelerometer data from before is used to determine whether the
 controller is being shaken. A running differential between the magnitude of the
 current data point and the previous one is being logged. If the difference
