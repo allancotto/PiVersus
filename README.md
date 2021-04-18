@@ -82,4 +82,4 @@ player with the most points wins the game.
 
 * [Facebook](https://www.facebook.com/piversusgame)
 * [Instagram](https://www.instagram.com/pi_versus/)
-* YouTube
+* [YouTube](https://www.youtube.com/channel/UCxI0JWJ07GGeQGmsw30Y7qQ)
