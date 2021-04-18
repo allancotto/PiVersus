@@ -3,7 +3,7 @@
 #ifndef instructions_h
 #define instructions_h
 
-#define NUMBER_OF_GAMES 3
+#define NUMBER_OF_GAMES 2
 
 class Instructions
 {

@@ -43,7 +43,7 @@ private:
   sf::Sprite bgSprite;
   sf::Sprite titleSprite;
 
-  int gameDuration = 21;
+  int gameDuration = 100;
   accel previousReadings;
   int currentScore = 0; 
   bool timeEnded = false;
