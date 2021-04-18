@@ -3,7 +3,7 @@
 #ifndef menu_h
 #define menu_h
 
-#define NUMBER_OF_GAMES 3
+#define NUMBER_OF_GAMES 2
 
 class Menu {
 

@@ -207,3 +207,4 @@ TEST_CASE("test countdown function") { // if zero should no longer decrement
     REQUIRE(g.gameDuration == 0);
 
 }
+

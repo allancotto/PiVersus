@@ -59,11 +59,11 @@ GameScreen::GameScreen(){
   timeBackground.setPosition(565.f, 90.f);
 
 
-  scoreBackground.setSize(sf::Vector2f(150.f, 150.f));
+  scoreBackground.setSize(sf::Vector2f(200.f, 150.f));
   scoreBackground.setOutlineThickness(3.f);
   scoreBackground.setFillColor(sf::Color(162, 44, 196));
   scoreBackground.setOutlineColor(sf::Color(255,255,255));
-  scoreBackground.setPosition(565.f, 420.f);
+  scoreBackground.setPosition(540.f, 420.f);
 
   readingsBackground.setSize(sf::Vector2f(300.f, 60.f));
   readingsBackground.setOutlineThickness(3.f);
@@ -148,7 +148,7 @@ void GameScreen::draw(sf::RenderWindow &window, int state) {
 void GameScreen::updateScore1(accel currentReadings) {
 
   accel difference = scoreDifference(currentReadings);
-  currentScore = currentScore + difference.y;
+  currentScore = currentScore + difference.y/2;
 
   std::ostringstream oss;
   oss << currentScore;
@@ -163,7 +163,7 @@ void GameScreen::updateScore2(accel currentReadings) {
   int differenceAdded = difference.x + difference.y + difference.z +1;
 
   if(differenceAdded<5) {
-    currentScore = currentScore + (10/differenceAdded);
+    currentScore = currentScore + (5/differenceAdded);
   }
   
 

@@ -18,10 +18,10 @@ Instructions::Instructions()
     switch (i)
     {
     case 0:
-      instructionText[i].setString("Instructions for Game 1");
+      instructionText[i].setString("Move the controller as fast as possible!");
       break;
     case 1:
-      instructionText[i].setString("Instructions for Game 2");
+      instructionText[i].setString("Hold the controller as still as possible!");
       break;
     case 2:
       instructionText[i].setString("Instructions for Game 3");
@@ -33,7 +33,7 @@ Instructions::Instructions()
     instructionText[i].setCharacterSize(36); // font size in pixels not points
     instructionText[i].setFillColor(sf::Color::White);
     instructionText[i].setStyle(sf::Text::Bold);
-    instructionText[i].setPosition(500.f, 50.f); // position to upper left corner
+    instructionText[i].setPosition(500.f, 150.f); // position to upper left corner
   }
 
     buttonText[0].setFont(font);

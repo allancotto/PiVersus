@@ -31,12 +31,12 @@ Menu::Menu() {
     games[1].setStyle(sf::Text::Bold);
     games[1].setPosition(490.f, 420.f); // position to upper left corner
 
-    games[2].setFont(font);
-    games[2].setString("Piggy Bank");
-    games[2].setCharacterSize(24); // font size in pixels not points
-    games[2].setFillColor(sf::Color::White);
-    games[2].setStyle(sf::Text::Bold);
-    games[2].setPosition(880.f, 420.f); // position to upper left corner
+    //games[2].setFont(font);
+    //games[2].setString("Piggy Bank");
+    //games[2].setCharacterSize(24); // font size in pixels not points
+    //games[2].setFillColor(sf::Color::White);
+    //games[2].setStyle(sf::Text::Bold);
+    //games[2].setPosition(880.f, 420.f); // position to upper left corner
 
     menuState = 0;
 
