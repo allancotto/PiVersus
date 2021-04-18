@@ -77,3 +77,9 @@ player with the most points wins the game.
 ![Schematic 3](https://user-images.githubusercontent.com/68835732/113633499-fec2b000-9664-11eb-8e1d-4965438cf5d5.png)
 
 *Figure 3: Schematic for Raspberry Pi and push button*
+
+## Social Media
+
+* [Facebook](https://www.facebook.com/piversusgame)
+* [Instagram](https://www.instagram.com/pi_versus/)
+* YouTube
