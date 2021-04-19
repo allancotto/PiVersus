@@ -1,59 +1,40 @@
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[forks-shield]: https://img.shields.io/github/forks/allancotto/PiVersus
+[forks-url]: https://github.com/allancotto/PiVersus/network/members
+[stars-shield]: https://img.shields.io/github/stars/allancotto/PiVersus
+[stars-url]: https://github.com/allancotto/PiVersus/stargazers
+[issues-shield]: https://img.shields.io/github/issues/allancotto/PiVersus
+[issues-url]: https://github.com/allancotto/PiVersus/issues
+[license-shield]: https://img.shields.io/github/license/allancotto/PiVersus
+[license-url]: https://github.com/allancotto/PiVersus/blob/main/LICENSE
+
+
+
 # PiVersus
 
-![PiVersus Logo](https://user-images.githubusercontent.com/68835732/110843542-51948c00-82a0-11eb-8ce0-1597a9427c66.png)
+![PiVersus](https://user-images.githubusercontent.com/35377323/115171986-31849380-a0bc-11eb-97fe-7317b7379ac3.gif)
 
 
 # Overview
 
+PiVersus is a `real-time game system` that allows `users` to play games `utilising real-time sensors`.
 
-PiVersus is a game system that uses two "sticks" as controllers to play several
-simple games. A raspberry pi will be kitted with a set of buttons that allow
-players to choose between the games. A speaker will output sound files that
-will explain the rules of the games, signal the start of a game and announce a
-winner at the end. Scoring for each game is done by real-time processing of
-the incoming data from the sensors in the controllers.
+PiVersus uses real-time sensors as controllers to allow users to play multiple games. 
+The system runs on a Raspberry Pi 4B. Scoring for each game is done through the real-time
+processing of incoming data from sensors.
 
+Connect with us on social media for regular updates!
 
-# Prototype Hardware
-* Raspberry Pi 4 Model B 4GB RAM
-* Push buttons
-* 2x Accelerometer/Gyroscope/Magnetometer sensors
-* 1x 2-axis joystick
-* LCD Screen module
-* Mini External USB Stereo Speaker
-* HDMI to Micro-HDMI Cable
-* Power Supply (5.1V 3A)
-
-# Games
-## Soda prank
-On the signal, the two players must shake their controller as hard as possible
-for 10 seconds. The player that shakes the hardest, wins.
-An accelerometer in each controller sends data to the RasPi. The RasPi then
-measures the magnitude of the data (as this is a triaxial accelerometer), and
-adds it to an array. At the end of the game, an average is taken from the points
-in the array and the player with the highest average wins the game.
-
-## Statue game
-On the signal, the players must hold their respective controllers as perfectly
-still as possible. If someone shakes their controller too hard, they lose.
-The same accelerometer data from before is used to determine whether the
-controller is being shaken. A running differential between the magnitude of the
-current data point and the previous one is being logged. If the difference
-exceeds a certain threshold for a certain controller, the game ends and the
-player has lost.
-
-## Piggy bank
-On the signal, players must rapidly shake the controller for 30 seconds. Every
-second, if the controller has been shaken hard enough over the past second, a
-coin sound plays, signifying the player has earned a point. The player with the
-most points at the end wins the game.
-
-The magnitude of motion of the controller is taken from the accelerometer data
-and stored in an array that holds enough data points for one second of motion.
-Once the array is filled with data, the average of the values is calculated. If the
-average exceeds a certain requirement, the coin sound is played and a value
-representing a player's score is increased by 1. At the end of the time limit, the
-player with the most points wins the game.
+[<img src=https://edent.github.io/SuperTinyIcons/images/svg/facebook.svg width=80>](https://www.facebook.com/piversusgame)
+[<img src=https://edent.github.io/SuperTinyIcons/images/svg/instagram.svg width=80>](https://www.instagram.com/pi_versus/)
+[<img src=https://edent.github.io/SuperTinyIcons/images/svg/youtube.svg width=80>](https://www.youtube.com/channel/UCxI0JWJ07GGeQGmsw30Y7qQ)
 
 ## Team Members:
 * Allan Cotto 2589702H
@@ -62,24 +43,82 @@ player with the most points wins the game.
 * Akhilesh Vishnu Hari 25967326H
 
 
-## Schematics:
+# Prototype Hardware
+* [Raspberry Pi 4 Model B 4GB RAM](https://thepihut.com/products/raspberry-pi-4-model-b)
+* [Push buttons](https://www.ebay.co.uk/itm/154400487760)
+* [2x Accelerometer/Gyroscope/Magnetometer sensors](https://thepihut.com/products/adafruit-precision-nxp-9-dof-breakout-board-ada3463?variant=12364068519998)
+* [1x 2-axis joystick](https://www.parallax.com/product/2-axis-joystick/)
+* [Mini External USB Stereo Speaker](https://thepihut.com/products/mini-external-usb-stereo-speaker?variant=31955934801)
+* [HDMI to Micro-HDMI Cable](https://thepihut.com/products/micro-hdmi-to-standard-hdmi-a-cable?variant=31597425033278) 
+* [Power Supply (5.1V 3A)](https://thepihut.com/products/raspberry-pi-psu-uk?variant=20064004505662)
 
-![Schematic 1](https://user-images.githubusercontent.com/68835732/113633467-eeaad080-9664-11eb-8d0d-5ba3c6a82a3b.png)
+
+## Wiring The Hardware:
+
+Follow the link below to view wiring schematics for the hardware. We have also developed output tests
+for each piece of hardware, so that you can test the hardware is working as expected after wiring. 
+
+* [Hardware Schematics](https://github.com/allancotto/PiVersus/wiki/Wiring-Diagrams)
+* [Running Output Tests](https://github.com/allancotto/PiVersus/wiki/Running-Hardware-Output-Tests)
 
 
-*Figure 1: Schematic for Raspberry PI and Accelerometer*
+
+## Running PiVersus
+
+To install PiVersus, follow these steps:
 
 
-![Schematic 2](https://user-images.githubusercontent.com/68835732/113633421-d5098900-9664-11eb-9b33-fa46016a83dd.png)
+1. Make a new directory for the project
+```
+ mkdir PiVersus
+ cd PiVersus
+```
 
-*Figure 2: Schematic for Raspberry Pi and ADC (Analogue-to-digital converter) / Joystick*
 
-![Schematic 3](https://user-images.githubusercontent.com/68835732/113633499-fec2b000-9664-11eb-8e1d-4965438cf5d5.png)
+2. Clone the repository 
+```
+ git clone https://github.com/allancotto/PiVersus.git
+```
 
-*Figure 3: Schematic for Raspberry Pi and push button*
 
-## Social Media
+3. Install SFML 
+```
+ sudo apt-get install libsfml-dev
+```
 
-* [Facebook](https://www.facebook.com/piversusgame)
-* [Instagram](https://www.instagram.com/pi_versus/)
-* [YouTube](https://www.youtube.com/channel/UCxI0JWJ07GGeQGmsw30Y7qQ)
+4. Navigate into the 'Main' folder and run the makefile
+```
+ cd Main
+ make
+```
+
+5. Navigate to the executable and run PiVersus
+
+```
+cd ..
+cd bin
+./main
+```
+
+
+# Games
+Game descriptions can be found in the Wiki.
+
+* [Game Descriptions](https://github.com/allancotto/PiVersus/wiki/Game-Descriptions)
+
+
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[forks-shield]: https://img.shields.io/github/forks/allancotto/PiVersus
+[forks-url]: https://github.com/allancotto/PiVersus/network/members
+[stars-shield]: https://img.shields.io/github/stars/allancotto/PiVersus
+[stars-url]: https://github.com/allancotto/PiVersus/stargazers
+[issues-shield]: https://img.shields.io/github/issues/allancotto/PiVersus
+[issues-url]: https://github.com/allancotto/PiVersus/issues
+[license-shield]: https://img.shields.io/github/license/allancotto/PiVersus
+[license-url]: https://github.com/allancotto/PiVersus/blob/main/LICENSE
+
