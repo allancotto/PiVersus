@@ -32,7 +32,7 @@ processing of incoming data from sensors.
 
 Website : https://allancotto.github.io/PiVersus/
 
-Connect with us on social media for regular updates!
+Connect with us on social media for regular updates! Check out our YouTube channel for a demo of the current release!
 
 [<img src=https://edent.github.io/SuperTinyIcons/images/svg/instagram.svg width=80>](https://www.instagram.com/pi_versus/)
 [<img src=https://edent.github.io/SuperTinyIcons/images/svg/youtube.svg width=80>](https://www.youtube.com/channel/UCxI0JWJ07GGeQGmsw30Y7qQ)
