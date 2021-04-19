@@ -108,7 +108,7 @@ Game descriptions can be found in the Wiki.
 
 * [Game Descriptions](https://github.com/allancotto/PiVersus/wiki/Game-Descriptions)
 * [Game Layout Designs](https://github.com/allancotto/PiVersus/wiki/Game-Layout-Designs)
-* [Game Layout Designs](https://github.com/allancotto/PiVersus/wiki/Game-Logo)
+* [Game Logos](https://github.com/allancotto/PiVersus/wiki/Game-Logos)
 
 
 
