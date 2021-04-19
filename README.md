@@ -55,7 +55,7 @@ Catch2 Unit Testing Framework for C++
 Wiring Pi GPIO Interface library for the Raspberry Pi
 * [WiringPi](http://wiringpi.com/)
 
-More details in the [Wiki](https://github.com/allancotto/PiVersus/wiki/Packages-----Libraries) Section
+More details in the [Wiki](https://github.com/allancotto/PiVersus/wiki/Packages--and--Libraries) Section
 
 ## RealTime Responsiveness
 
