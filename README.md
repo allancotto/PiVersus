@@ -19,7 +19,7 @@
 
 # PiVersus
 
-![PiVersus Logo](https://github.com/allancotto/PiVersus/issues/8#issuecomment-822118935)
+![PiVersus](https://user-images.githubusercontent.com/35377323/115171986-31849380-a0bc-11eb-97fe-7317b7379ac3.gif)
 
 
 # Overview
