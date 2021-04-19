@@ -47,7 +47,7 @@ Connect with us on social media for regular updates! Check out our YouTube chann
 ## Packages/Libraries Used:
 
 SFML — Simple and Fast Multimedia Library
-* [SFML 2.5.1](https://github.com/allancotto/PiVersus/wiki/Game-Descriptions)
+* [SFML 2.5.1](https://github.com/SFML/SFML)
 
 Catch2 Unit Testing Framework for C++
 * [Catch2](https://github.com/catchorg/Catch2)
