@@ -30,6 +30,8 @@ PiVersus uses real-time sensors as controllers to allow users to play multiple g
 The system runs on a Raspberry Pi 4B. Scoring for each game is done through the real-time
 processing of incoming data from sensors.
 
+Website : https://allancotto.github.io/PiVersus/
+
 Connect with us on social media for regular updates!
 
 [<img src=https://edent.github.io/SuperTinyIcons/images/svg/facebook.svg width=80>](https://www.facebook.com/piversusgame)
