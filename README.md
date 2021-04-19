@@ -30,6 +30,12 @@ PiVersus uses real-time sensors as controllers to allow users to play multiple g
 The system runs on a Raspberry Pi 4B. Scoring for each game is done through the real-time
 processing of incoming data from sensors.
 
+Connect with us on social media for regular updates!
+
+[<img src=https://edent.github.io/SuperTinyIcons/images/svg/facebook.svg width=80>](https://www.facebook.com/piversusgame)
+[<img src=https://edent.github.io/SuperTinyIcons/images/svg/instagram.svg width=80>](https://www.instagram.com/pi_versus/)
+[<img src=https://edent.github.io/SuperTinyIcons/images/svg/youtube.svg width=80>](https://www.youtube.com/channel/UCxI0JWJ07GGeQGmsw30Y7qQ)
+
 ## Team Members:
 * Allan Cotto 2589702H
 * Ibrahim Javed 2265799J
@@ -102,11 +108,7 @@ Game descriptions can be found in the Wiki.
 
 
 
-## Social Media
 
-* [Facebook](https://www.facebook.com/piversusgame)
-* [Instagram](https://www.instagram.com/pi_versus/)
-* [YouTube](https://www.youtube.com/channel/UCxI0JWJ07GGeQGmsw30Y7qQ)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
