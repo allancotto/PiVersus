@@ -44,6 +44,21 @@ Connect with us on social media for regular updates! Check out our YouTube chann
 * Paul Lampropoulos 2245874L
 * Akhilesh Vishnu Hari 25967326H
 
+## Packages/Libraries Used:
+
+SFML — Simple and Fast Multimedia Library
+* [SFML 2.5.1](https://github.com/allancotto/PiVersus/wiki/Game-Descriptions)
+
+Catch2 Unit Testing Framework for C++
+* [Catch2](https://github.com/catchorg/Catch2)
+
+Wiring Pi GPIO Interface library for the Raspberry Pi
+* [WiringPi](http://wiringpi.com/)
+
+
+## RealTime Responsiveness
+
+You can read about the RealTime Responsiveness of the game in the [Wiki](https://github.com/allancotto/PiVersus/wiki/RealTime-Responsiveness). We use multiple threads throughout PiVersus, we have threads for each input which are launched and terminated depending on state and also sleep according to required latencies. The graphics also run on a dedicated thread so the game always runs seamlessly.
 
 # Prototype Hardware
 * [Raspberry Pi 4 Model B 4GB RAM](https://thepihut.com/products/raspberry-pi-4-model-b)
@@ -55,10 +70,8 @@ Connect with us on social media for regular updates! Check out our YouTube chann
 * [Power Supply (5.1V 3A)](https://thepihut.com/products/raspberry-pi-psu-uk?variant=20064004505662)
 
 
-## Wiring The Hardware:
-
-Follow the link below to view wiring schematics for the hardware. We have also developed output tests
-for each piece of hardware, so that you can test the hardware is working as expected after wiring. 
+Links below lead to wiring schematics for the hardware in the Wiki, we have also developed output tests
+for each piece of hardware; so you can test each individual piece of hardware is working as expected after wiring. 
 
 * [Hardware Schematics](https://github.com/allancotto/PiVersus/wiki/Wiring-Diagrams)
 * [Running Output Tests](https://github.com/allancotto/PiVersus/wiki/Running-Hardware-Output-Tests)
@@ -67,7 +80,7 @@ for each piece of hardware, so that you can test the hardware is working as expe
 
 ## Running PiVersus
 
-To install PiVersus, follow these steps:
+To make and run PiVersus, follow these steps:
 
 
 1. Make a new directory for the project
