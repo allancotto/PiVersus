@@ -65,6 +65,7 @@ You can read about the RealTime Responsiveness of the game in the [Wiki](https:/
 * [Push buttons](https://www.ebay.co.uk/itm/154400487760)
 * [2x Accelerometer/Gyroscope/Magnetometer sensors](https://thepihut.com/products/adafruit-precision-nxp-9-dof-breakout-board-ada3463?variant=12364068519998)
 * [1x 2-axis joystick](https://www.parallax.com/product/2-axis-joystick/)
+* [MCP3008 ADC](https://learn.adafruit.com/raspberry-pi-analog-to-digital-converters/mcp3008)
 * [Mini External USB Stereo Speaker](https://thepihut.com/products/mini-external-usb-stereo-speaker?variant=31955934801)
 * [HDMI to Micro-HDMI Cable](https://thepihut.com/products/micro-hdmi-to-standard-hdmi-a-cable?variant=31597425033278) 
 * [Power Supply (5.1V 3A)](https://thepihut.com/products/raspberry-pi-psu-uk?variant=20064004505662)
