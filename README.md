@@ -34,9 +34,9 @@ Website : https://allancotto.github.io/PiVersus/
 
 Connect with us on social media for regular updates!
 
-[<img src=https://edent.github.io/SuperTinyIcons/images/svg/facebook.svg width=80>](https://www.facebook.com/piversusgame)
 [<img src=https://edent.github.io/SuperTinyIcons/images/svg/instagram.svg width=80>](https://www.instagram.com/pi_versus/)
 [<img src=https://edent.github.io/SuperTinyIcons/images/svg/youtube.svg width=80>](https://www.youtube.com/channel/UCxI0JWJ07GGeQGmsw30Y7qQ)
+[<img src=https://edent.github.io/SuperTinyIcons/images/svg/facebook.svg width=80>](https://www.facebook.com/piversusgame)
 
 ## Team Members:
 * Allan Cotto 2589702H
